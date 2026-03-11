@@ -1,116 +1,118 @@
-# .github/workflows/deploy.yml
-#
-# Builds a pure React + TypeScript (Vite) project and deploys it to GitHub Pages.
-#
-# Triggers ONLY when a tag matching "deploy-*" is pushed by the repo owner (SRE-0).
-# Can also be triggered manually from the Actions tab (only by SRE-0).
-#
-# React Router requires a SPA redirect workaround for GitHub Pages.
-# A 404.html is copied from public/ to handle deep-link refreshes.
-#
-# Required repository setting:
-#   Settings > Pages > Source > must be set to "GitHub Actions"
-#
-# Optional secrets (add in Settings > Secrets > Actions if needed):
-#   VITE_API_URL, VITE_SOME_KEY, etc.
+# deploy.yml
+# Workflow: Build and deploy the React/Vite project to GitHub Pages.
+# Trigger: Only when a tag matching the pattern "deploy-*" is pushed
+#          (e.g., deploy-v1.0.0, deploy-dev-2025).
+# Restriction: The job will abort if the actor who triggered the workflow
+#              is not "SRE-0". This acts as a soft actor-level guard.
 
 name: Deploy to GitHub Pages
 
 on:
-  # Triggers when a tag matching "deploy-*" is pushed
-  # Examples: deploy-v1.0, deploy-prod, deploy-hotfix
   push:
     tags:
+      # Only tags that match this pattern will trigger the workflow.
+      # Examples: deploy-v1.0.0 | deploy-dev | deploy-2025-01-01
       - "deploy-*"
 
-  # Allows triggering the workflow manually from the Actions tab
-  workflow_dispatch:
+# Sets permissions for the GITHUB_TOKEN used by the workflow.
+# "contents: read"  -> allows checking out the repository code.
+# "pages: write"    -> allows uploading and deploying to GitHub Pages.
+# "id-token: write" -> required by the official GitHub Pages deploy action
+#                      to authenticate via OIDC (no PAT needed).
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Prevents multiple deployments from running at the same time.
+# If a new deployment is triggered while one is running, the in-progress
+# one will NOT be cancelled — the new one will be queued instead.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  # -----------------------------------------------------------------------
+  # Job: build
+  # Installs dependencies, compiles TypeScript, and builds the Vite bundle.
+  # -----------------------------------------------------------------------
+  build:
+    name: Build
     runs-on: ubuntu-latest
 
-    # Only the repository owner (SRE-0) can trigger a deploy.
-    # This check applies to both tag pushes and manual triggers.
-    if: github.actor == 'SRE-0'
+    steps:
+      # Step: Actor guard
+      # Aborts the workflow immediately if the triggering user is not "SRE-0".
+      # This is a soft restriction — it does not prevent someone with write
+      # access from creating a matching tag, but it will stop the job if they do.
+      - name: Verify authorized actor
+        if: github.actor != 'SRE-0'
+        run: |
+          echo "Unauthorized actor: ${{ github.actor }}. Only SRE-0 can trigger this workflow."
+          exit 1
 
-    permissions:
-      contents: read   # Read repository contents
-      pages: write     # Write to GitHub Pages
-      id-token: write  # Required by deploy-pages for OIDC authentication
+      # Step: Checkout repository code at the triggered tag.
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
+      # Step: Set up Node.js.
+      # Using Node 20 LTS for stability. The cache key is tied to package-lock.json
+      # so the cache is invalidated automatically when dependencies change.
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      # Step: Install all dependencies using the lockfile for reproducible builds.
+      # "ci" is preferred over "install" in CI pipelines — it is faster and
+      # will fail if package-lock.json is out of sync with package.json.
+      - name: Install dependencies
+        run: npm ci
+
+      # Step: Run the Vite build (includes tsc -b as defined in package.json).
+      # The output is written to the "dist/" directory by default.
+      - name: Build project
+        run: npm run build
+
+      # Step: Configure GitHub Pages for this repository.
+      # This sets up the necessary metadata for the deployment environment.
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v5
+
+      # Step: Upload the "dist/" folder as a Pages artifact.
+      # This artifact is later consumed by the "deploy" job.
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "./dist"
+
+  # -----------------------------------------------------------------------
+  # Job: deploy
+  # Takes the artifact from the build job and deploys it to GitHub Pages.
+  # This job runs only after "build" completes successfully.
+  # -----------------------------------------------------------------------
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+
+    # Associates this job with the "github-pages" deployment environment.
+    # This enables the deployment URL to appear in the repository UI and
+    # allows environment-level protection rules to be configured.
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      # ------------------------------------------------------------------ #
-      # 1. Checkout the repository at the pushed tag
-      # ------------------------------------------------------------------ #
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      # Step: Actor guard (repeated for the deploy job as an extra safety layer).
+      - name: Verify authorized actor
+        if: github.actor != 'SRE-0'
+        run: |
+          echo "Unauthorized actor: ${{ github.actor }}. Only SRE-0 can trigger this workflow."
+          exit 1
 
-      # ------------------------------------------------------------------ #
-      # 2. Setup Node.js 20 with npm cache enabled
-      # ------------------------------------------------------------------ #
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: "npm"
-
-      # ------------------------------------------------------------------ #
-      # 3. Cache ~/.npm to speed up installs on repeated runs
-      #    Key is based on the OS + hash of package-lock.json
-      # ------------------------------------------------------------------ #
-      - name: Cache node modules
-        uses: actions/cache@v4
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      # ------------------------------------------------------------------ #
-      # 4. Install dependencies using the lockfile (no version drift)
-      # ------------------------------------------------------------------ #
-      - name: Install dependencies
-        run: npm ci
-
-      # ------------------------------------------------------------------ #
-      # 5. Build the Vite + React + TypeScript app for production
-      #    Output goes to /dist as configured in vite.config.ts
-      #    Add environment variable secrets here if your app needs them:
-      #      VITE_API_URL: ${{ secrets.API_URL }}
-      # ------------------------------------------------------------------ #
-      - name: Build React app
-        run: npm run build
-        env:
-          NODE_ENV: production
-
-      # ------------------------------------------------------------------ #
-      # 6. React Router SPA fix for GitHub Pages
-      #
-      #    GitHub Pages returns a real 404 for unknown paths (e.g. /about).
-      #    Copying index.html to 404.html makes GitHub Pages serve your app
-      #    shell on any route, letting React Router take over client-side.
-      #
-      #    See: public/404.html section below for the cleaner redirect approach.
-      # ------------------------------------------------------------------ #
-      - name: Copy index.html to 404.html for SPA routing
-        run: cp dist/index.html dist/404.html
-
-      # ------------------------------------------------------------------ #
-      # 7. Upload the /dist folder as a Pages artifact
-      # ------------------------------------------------------------------ #
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
-
-      # ------------------------------------------------------------------ #
-      # 8. Deploy the uploaded artifact to GitHub Pages
-      # ------------------------------------------------------------------ #
+      # Step: Deploy the uploaded Pages artifact to GitHub Pages.
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
