@@ -1,5 +1,5 @@
 import React from "react";
-import { HashRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
 import { ThemeProvider } from "./core/theme/ThemeContext";
 import Header from "./core/components/layout/Header/Header";
@@ -23,7 +23,7 @@ import "./App.css";
 function App() {
   return (
     <ThemeProvider>
-      <HashRouter>
+      <BrowserRouter>
         <div className="app-layout">
           <Header />
           <main className="app-main">
@@ -31,7 +31,7 @@ function App() {
           </main>
           <Footer />
         </div>
-      </HashRouter>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }

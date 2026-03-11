@@ -1,13 +1,65 @@
-<!doctype html>
+<!DOCTYPE html>
+
+<!--
+  GitHub Pages SPA redirect receiver.
+  
+  Reads the ?p= query param injected by 404.html and restores
+  the original URL so React Router sees the correct path.
+  Must be placed before any JS bundles load.
+-->
+<script>
+  (function (l) {
+    if (l.search[1] === "/") {
+      var decoded = l.search
+        .slice(1)
+        .split("&")
+        .map(function (s) {
+          return s.replace(/~and~/g, "&");
+        });
+      window.history.replaceState(
+        null,
+        null,
+        l.pathname.slice(0, -1) +
+          decoded[0] +
+          (decoded[1] ? "?" + decoded[1] : "") +
+          l.hash
+      );
+    }
+  })(window.location);
+</script>
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>sre_web</title>
+
+    <!--
+      Favicon — place your icon at public/favicon.ico or change this path.
+      Vite copies everything in /public to the root of the dist folder.
+    -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!--
+      Page title shown in the browser tab.
+      Change to match your project name.
+    -->
+    <title>SRE-0</title>
   </head>
   <body>
+    <!--
+      Root mount point for React.
+      ReactDOM.createRoot targets this element in main.tsx.
+      Must have id="root" to match the selector in main.tsx.
+    -->
     <div id="root"></div>
+
+    <!--
+      Entry point for Vite.
+      Vite reads this script tag, resolves the module graph starting
+      from main.tsx, and replaces this tag with the compiled bundle
+      during "vite build".
+      Do NOT change this to a compiled path — Vite handles that.
+    -->
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
