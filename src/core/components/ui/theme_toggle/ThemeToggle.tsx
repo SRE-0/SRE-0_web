@@ -1,4 +1,3 @@
-import React from "react";
 import { useTheme } from "../../../theme/ThemeContext";
 import type { Theme } from "../../../theme/theme.types";
 import styles from "./ThemeToggle.module.css";

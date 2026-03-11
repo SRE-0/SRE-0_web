@@ -38,7 +38,9 @@ i18n
       },
       es: {
         home: homeES,
-        common: commonES
+        common: commonES,
+        coding: codingES,       // agrega esto
+        competencies: competenciesES,
       },
     },
 

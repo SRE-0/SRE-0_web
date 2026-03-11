@@ -1,5 +1,3 @@
-import React from 'react' 
-
 import ImageContainer from '../../../core/components/ui/screenshots_grid/ScreenshotsGrid'
 import HeaderImage from '../../../core/components/ui/header_image/HeaderImage'
 import SingleImage from "../../../core/components/ui/single_image/SingleImage"

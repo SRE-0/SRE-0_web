@@ -2,7 +2,7 @@
 
 import React from "react";
 import { CustomTextLink } from "../custom_text_link/CustomTextLink";
-import type { RichTextSegment } from "../../../types/i18n.types";
+import type { RichTextSegment } from "../../../../types/i18n.types";
 
 type RichTextProps = {
   /** Array of segments (plain text or links) to render inline */

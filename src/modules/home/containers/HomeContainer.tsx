@@ -1,4 +1,3 @@
-import React from 'react';
 import HomeView from '../components/home_view/HomeView';
 
 export const HomeContainer = () => {
