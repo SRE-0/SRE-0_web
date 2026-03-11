@@ -1,0 +1,85 @@
+# deploy.yml
+#
+# Builds a pure React project and deploys it to GitHub Pages.
+# Triggers ONLY when a tag matching "deploy-*" is pushed by the repo owner (SRE-0).
+# Can also be triggered manually from the Actions tab (only by SRE-0).
+#
+# Required repository secrets: none by default.
+# If your app uses environment variables, add them as secrets and
+# inject them in the "Build React app" step.
+#
+# Required repository setting: Pages source must be set to "GitHub Actions".
+
+name: Deploy to GitHub Pages
+
+on:
+  # Triggers when a tag matching "deploy-*" is pushed (e.g. deploy-v1.0, deploy-prod)
+  push:
+    tags:
+      - "deploy-*"
+  # Allows triggering the workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    # Only allow the repository owner to trigger a deploy
+    # This check applies both to tag pushes and manual triggers
+    if: github.actor == 'SRE-0'
+
+    permissions:
+      contents: read   # Read the repository contents
+      pages: write     # Write to GitHub Pages
+      id-token: write  # Required by deploy-pages action for OIDC authentication
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      # Caches node_modules based on package-lock.json hash
+      # so subsequent runs skip re-downloading unchanged packages
+      - name: Cache node modules
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Build the React app for production
+      # If you use Create React App (CRA), this runs "react-scripts build"
+      # If you use Vite, this runs "vite build"
+      # Both are configured via package.json "build" script
+      - name: Build React app
+        run: npm run build
+        env:
+          NODE_ENV: production
+          # Add your environment variables here if needed, for example:
+          # REACT_APP_API_URL: ${{ secrets.API_URL }}
+          # VITE_API_URL: ${{ secrets.API_URL }}
+
+      # Upload the build output folder as a Pages artifact
+      # For CRA the output folder is "build", for Vite it is "dist"
+      # Change the "path" value to match your project
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist  # <-- Change to "build" if you are using Create React App
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
