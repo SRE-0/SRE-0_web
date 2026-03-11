@@ -1,4 +1,4 @@
-import React, { Fragment } from "react"
+import { Fragment } from "react"
 import { CustomTextLink } from "../components/ui/custom_text_link/CustomTextLink"
 
 /*

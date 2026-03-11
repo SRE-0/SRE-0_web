@@ -24,7 +24,7 @@ interface ProjectCardProps {
  * - tags:        list of technology tags
  * - route:       full route string for the detail page link
  */
-function ProjectCard({ title, description, image, tags, route }: ProjectCardProps) {
+function ProjectCard({ title, description, image, route }: ProjectCardProps) {
   return (
     <Link to={route} className={styles.card}>
       <div className={styles.image_container}>

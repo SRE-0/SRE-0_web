@@ -21,7 +21,7 @@ export default function HomeProjects() {
   const { t } = useTranslation("home")
 
   const projects = useCodingProjects();
-  const codingProjects     = useCodingProjects();
+  //const codingProjects     = useCodingProjects();
   //const competencyProjects = useCompetencyProjects();
 
 
