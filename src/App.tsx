@@ -7,6 +7,7 @@ import AppRouter from "./core/router/AppRouter";
 import Footer from "./core/components/layout/Footer/Footer";
 import "./App.css";
 
+//test
 /**
  * App
  * Root of the React tree.
