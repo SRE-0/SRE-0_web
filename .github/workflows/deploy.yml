@@ -9,10 +9,8 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    tags:
-      # Only tags that match this pattern will trigger the workflow.
-      # Examples: deploy-v1.0.0 | deploy-dev | deploy-2025-01-01
-      - "deploy-*"
+    branches:
+      - master
 
 # Sets permissions for the GITHUB_TOKEN used by the workflow.
 # "contents: read"  -> allows checking out the repository code.
