@@ -10,7 +10,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - master
+      - main
 
 # Sets permissions for the GITHUB_TOKEN used by the workflow.
 # "contents: read"  -> allows checking out the repository code.
