@@ -1,0 +1,1 @@
+export { default as Competencies } from "./pages/Competencies";

@@ -1,0 +1,15 @@
+{
+  "welcome": {
+    "title": "Welcome!",
+    "paragraphs": {
+      "intro": "Hi there! I'm Sergio Perez, an Android developer and technology enthusiast from South America. I'm currently studying Computer Science while building projects that explore the intersection of software, robotics, and embedded systems.",
+      "background": "Over the past few years I've participated in several robotics competitions, earning awards in some of them. I also enjoy developing experimental projects, from intelligent fire-detection vehicles powered by ESP32 to Android applications that connect hardware, data, and users.",
+      "closing": "My goal is to create technology that feels like a natural extension of human creativity—where art, engineering, and modern digital tools work together to solve real problems. Feel free to explore my work on {{githubLink}}, try some of my {{appsLink}}, or simply take a look around the website."
+    }
+  },
+
+  "projects": {
+    "title": "Recent highlights",
+    "description": "Here you can see some of my recent projects. Look at my project management on {{githubLink}} to see what I'm currently working on."
+  }
+}

@@ -1,0 +1,1 @@
+export { default as Coding } from "./pages/Coding";

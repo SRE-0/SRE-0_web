@@ -1,0 +1,47 @@
+/* 
+  Wrapper that acts as the positioning context for the underline pseudo-element.
+  display:inline-block ensures it only takes up as much space as the text.
+*/
+.customWrapper {
+  display: inline-block;
+  position: relative;
+}
+
+/*
+  The anchor itself.
+  - position:relative is needed so the ::after pseudo-element is positioned relative to it.
+  - color and text-decoration override the browser default blue link style.
+  - transition smoothly changes the color on hover if needed in the future.
+*/
+.customTextLink {
+  position: relative;
+  font-weight: 500;
+  color: var(--md-sys-color-primary);
+  text-decoration: none;
+  transition: color 0.25s linear;
+}
+
+/*
+  The animated underline.
+  - Starts with scaleX(0) so it is invisible.
+  - transform-origin: left ensures it expands from left to right.
+  - On hover, scaleX becomes 1 and occupies the full width.
+*/
+.customTextLink::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--md-sys-color-tertiary);
+
+  transform: scale(0);
+  transform-origin: left;
+  transition: transform 0.25s linear;
+}
+
+/* Triggers the underline expansion on hover */
+.customTextLink:hover::after {
+  transform: scaleX(1);
+}

@@ -1,0 +1,55 @@
+.card {
+    background-color: var(--md-sys-color-surface-variant);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    max-height: var(--max-width-sm);
+    color: var(--md-sys-color-on-surface);
+    text-decoration: none;
+}
+
+.text_container {
+    padding: var(--spacing-md);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.text_title {
+    margin: 0;
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
+}
+
+.text_description {
+    margin: 0;
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+}
+
+/* 
+  image_container height is fixed so all cards
+  have a consistent image area regardless of image dimensions.
+*/
+.image_container {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    flex-shrink: 0;
+    border-radius: var(--radius-lg);
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
+    transition: transform 0.25s linear;
+}
+
+.image:hover{
+    transform: scale(1.05);
+}

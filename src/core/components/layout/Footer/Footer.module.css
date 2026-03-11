@@ -1,0 +1,75 @@
+/* 
+ * Footer layout wrapper.
+ * Centers all content and applies surface-variant background.
+ */
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 28px 16px 10px 16px;
+    border-radius: 20px 20px 0 0;
+    background-color: var(--md-sys-color-surface-variant);
+}
+
+/* 
+ * Section heading above contact info.
+ */
+.title {
+    font-weight: var(--font-regular);
+    font-size: var(--text-2xl);
+    margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+/* 
+ * Wrapper for name, bio and email.
+ * Uses flex column so each child gets uniform gap spacing
+ * instead of relying on inconsistent <br /> line breaks.
+ */
+.contactBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+}
+
+/* 
+ * Full name label — slightly bolder than body text.
+ */
+.name {
+    font-weight: var(--font-midsemibold);
+    margin: 0;
+}
+
+/* 
+ * Bio / short description line.
+ */
+.bio {
+    margin: 0;
+}
+
+/* 
+ * Decorative divider between contact block and copyright.
+ */
+.divider {
+    border: none;
+    height: 1px;
+    width: 60px;
+    background: var(--md-sys-color-outline);
+    margin: 0;
+}
+
+/* 
+ * Copyright row at the very bottom of the footer.
+ */
+.copyright {
+    font-size: 0.85rem;
+    color: var(--md-sys-color-on-surface-variant);
+    margin-top: 8px;
+    margin-bottom: 16px;
+}
+
+.layout {
+    padding: 4px;
+}

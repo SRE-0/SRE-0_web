@@ -1,0 +1,39 @@
+/*
+ * .grid
+ * Responsive grid layout for the screenshot cards.
+ *
+ * Uses a fluid column strategy:
+ * - On small screens (< 600px): 2 columns
+ * - On medium screens (600px - 1200px): 3-4 columns
+ * - On large screens (> 1200px): 4-6 columns
+ *
+ * The clamp() in minmax ensures cards grow proportionally
+ * with the viewport instead of staying fixed at 150px.
+ * clamp(min, preferred, max):
+ *   - min: 200px — never shrink below this
+ *   - preferred: 20vw — scales with the viewport width
+ *   - max: 400px — never grow beyond this per column
+ */
+.grid {
+  display: grid;
+  grid-template-columns: 
+    repeat(
+      auto-fill,
+      minmax(clamp(100px, 20vw, 190px), 1fr)
+    );
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+}
+
+/*
+ * .image
+ * Fills the container fully without cropping.
+ * object-fit: contain ensures the entire screenshot is visible,
+ * with no zoom or spatial distortion. The background-color on
+ * .container covers any empty space if the image ratio differs slightly.
+ */
+.image {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  border: 1.2px solid var(--md-sys-color-outline);
+}

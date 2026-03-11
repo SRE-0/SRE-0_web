@@ -1,0 +1,12 @@
+{
+    "coding_projects": {
+        "project1": {
+            "title": "GradeBook: Save Your Grades",
+            "description": "GradeBook is an Android application that I developed to help students and teachers manage their grades and assignments. The app allows users to create and organize their courses, track their progress, and calculate their final grades based on different grading schemes."
+        },
+        "project2": {
+            "title": "TeamPyros Mobile App",
+            "description": "The TeamPyros Mobile App is an Android application that I developed to provide real-time updates and information about our robotics team. The app includes features such as news updates, real time events and data information about the vehicle."
+        }
+    }
+}

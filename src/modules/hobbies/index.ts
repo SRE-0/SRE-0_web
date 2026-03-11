@@ -1,0 +1,1 @@
+export { default as Hobbies } from "./pages/Hobbies";

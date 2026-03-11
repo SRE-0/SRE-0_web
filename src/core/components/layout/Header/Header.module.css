@@ -1,0 +1,163 @@
+/*
+ * Main header container.
+ * Column layout to stack brand and nav vertically.
+ */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  background-color:  color-mix(in srgb, var(--md-sys-color-primary) 100%, transparent);
+  overflow: hidden; /* clips nav when tabs don't fit */  
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+  color: var(--md-sys-color-on-primary);
+}
+
+/*
+ * Brand/logo wrapper.
+ */
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+}
+
+.logo {
+  font-size: var(--text-lg);
+  font-weight: var(--font-regular);
+  
+}
+
+.logoLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+/*
+ * Navigation tab container.
+ * Stretches to full header width so tabs can distribute evenly.
+ * overflow: hidden hides tabs that don't fit instead of wrapping.
+ */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: var(--max-width-sm);
+  overflow: hidden;
+}
+
+/*
+ * Individual nav tab.
+ * flex: 1 makes each tab grow equally to fill the available width.
+ * text-align: center keeps the label centered inside each tab.
+ * white-space: nowrap prevents label text from wrapping to a second line.
+ * min-width: 0 allows flex shrink to work correctly when space is tight.
+ */
+.navLink {
+  flex: 1;
+  font-weight: var(--font-semibold);
+  position: relative;
+  text-align: center;
+  padding: 12px var(--spacing-xs);
+  border-radius: var(--radius-lg) var(--radius-lg) 0  0;
+  color: var(--md-sys-color-on-primary);
+  text-decoration: none;
+  font-size: var(--text-sm);
+  transition: background-color 0.2s, color 0.2s;
+}
+
+/* Animated bottom line */
+.navLink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 3px;
+
+  background: var(--md-sys-color-on-primary);
+
+  /* Line starts hidden */
+  transform: scaleX(0);
+
+  /* Animation grows from the left */
+  transform-origin: left;
+
+  /* Smooth animation */
+  transition: transform 0.3s ease;
+}
+
+/* Hover state */
+.navLink:hover {
+  background-color: #0000000f;
+  color: var(--md-sys-color-on-primary);
+}
+
+/* Animate the line */
+.navLink:hover::after {
+  transform: scaleX(1);
+}
+
+/*
+.active {
+  background-color: var(--md-sys-color-surface-container-high);
+  color: var(--md-sys-color-on-surface);
+  border-bottom: 3px solid var(--md-sys-color-primary);
+}*/
+
+
+/* ... tu css existente sin cambios ... */
+
+/*
+ * Hamburger button — hidden on large screens, visible on mobile.
+ * Only rendered in the DOM when screen is small.
+ */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--spacing-sm);
+  color: var(--md-sys-color-on-primary);
+}
+
+/*
+ * Mobile breakpoint — hides nav tabs and shows hamburger button.
+ */
+@media (max-width: 480px) {
+  
+
+  .hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /*
+   * Nav is hidden by default on mobile.
+   * When .navOpen is added to the nav, it expands vertically.
+   */
+  .nav {
+    max-height: 0;
+    overflow: hidden;
+    flex-direction: column;
+    transition: max-height 0.3s ease;
+  }
+
+  .navOpen {
+    max-height: 300px;
+  }
+
+  .navLink {
+    width: 100%;
+    text-align: center;
+    border-radius: 0;
+    padding: var(--spacing-sm) 0;
+  }
+}

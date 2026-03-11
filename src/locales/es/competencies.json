@@ -1,0 +1,8 @@
+{
+    "competencies_projects":{
+        "project1":{
+            "title": "Team Pyros",
+            "description": "Team Pyros is a robotics team that I co-founded in 2020. We design and build competitive robots for various competitions, including the prestigious FIRST Robotics Competition (FRC). Our team has won several awards, including the FRC World Championship in 2022."
+        }
+    }
+}

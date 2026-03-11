@@ -1,0 +1,13 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About"
+  },
+  "buttons": {
+    "save": "Save",
+    "cancel": "Cancel"
+  },
+  "errors": {
+    "required": "This field is required"
+  }
+}
