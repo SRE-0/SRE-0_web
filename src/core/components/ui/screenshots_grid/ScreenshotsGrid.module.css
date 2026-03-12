@@ -21,7 +21,7 @@
       auto-fill,
       minmax(clamp(150px, 20vw, 190px), 1fr)
     );
-  gap: var(--spacing-lg);
+  gap: var(--spacing-md);
   margin-top: var(--spacing-lg);
 }
 

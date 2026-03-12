@@ -19,9 +19,9 @@
   grid-template-columns: 
     repeat(
       auto-fill,
-      minmax(clamp(160px, 20vw, 210px), 1fr)
+      minmax(clamp(150px, 20vw, 210px), 1fr)
     );
-  gap: var(--spacing-lg);
+  gap: var(--spacing-md);
   margin-top: var(--spacing-lg);
 }
 
