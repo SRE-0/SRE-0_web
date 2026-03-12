@@ -6,14 +6,13 @@ import { CODING_PROJECTS, type CodingProject } from "../data/coding.registry";
 export interface ResolvedCodingProject extends CodingProject {
   title:       string;
   description: string;
+  body:        string;
 }
 
 /*
  * useCodingProjects
  * Merges the static registry with translated text for the active language.
- * Returns a ready-to-render list — no translation logic needed in components.
- *
- * Returns: ResolvedCodingProject[] with all fields including translated title/description.
+ * Returns a fully resolved list ready to render — no i18n logic in components.
  */
 export function useCodingProjects(): ResolvedCodingProject[] {
   const { t } = useTranslation("coding");
@@ -22,5 +21,6 @@ export function useCodingProjects(): ResolvedCodingProject[] {
     ...project,
     title:       t(project.i18nKeys.title),
     description: t(project.i18nKeys.description),
+    body:        t(project.i18nKeys.body),
   }));
 }

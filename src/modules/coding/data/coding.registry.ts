@@ -21,6 +21,7 @@ export interface CodingProject {
   i18nKeys: {
     title:       string;
     description: string;
+    body:        string; 
   };
 }
 
@@ -36,6 +37,7 @@ export const CODING_PROJECTS: CodingProject[] = [
     i18nKeys: {
       title:       "coding_projects.project1.title",
       description: "coding_projects.project1.description",
+      body: "coding_projects.project2.body",
     },
   },
   {
@@ -47,6 +49,7 @@ export const CODING_PROJECTS: CodingProject[] = [
     i18nKeys: {
       title:       "coding_projects.project2.title",
       description: "coding_projects.project2.description",
+      body: "coding_projects.project2.body",
     },
   },
 ];

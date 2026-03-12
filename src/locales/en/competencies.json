@@ -1,8 +1,48 @@
 {
-    "competencies_projects":{
-        "project1":{
-            "title": "Team Pyros",
-            "description": "Team Pyros is a robotics team that I co-founded in 2020. We design and build competitive robots for various competitions, including the prestigious FIRST Robotics Competition (FRC). Our team has won several awards, including the FRC World Championship in 2022."
+  "competencies_projects": {
+    "project1": {
+      "title": "TeamPyros",
+      "description": "TeamPyros is a small robotics team focused on developing technological solutions to address real-world problems.",
+      "body": {
+        "about": {
+          "subtitle": "TeamPyros",
+          "paragraphs": {
+            "p1": "TeamPyros is a small team of young enthusiasts in electronics, robotics, and programming who share a common goal: solving real-world problems through creative technological solutions.",
+            "p2": "Our work combines research, experimentation, and practical development to build systems that can be applied in real environments where technology can make a meaningful impact."
+          }
+        },
+        "origin": {
+          "subtitle": "Where did the idea come from?",
+          "paragraphs": {
+            "p1": "The idea behind the project originates from our home region, where every year during the dry season large areas of mountainous terrain and vegetation are affected by wildfires.",
+            "p2": "These fires not only destroy part of the local biodiversity but also represent a serious risk for nearby communities. In addition to material losses, smoke and toxic gases produced by fires can cause severe respiratory problems."
+          }
+        },
+        "solution": {
+          "subtitle": "Our robotic solution",
+          "paragraphs": {
+            "p1": "To address this problem we developed our main project, Avila-Fire, an autonomous fire prevention and control system designed to respond at the earliest stages of potential fire hazards.",
+            "p2": "The system is intended for both civil environments—such as homes, warehouses, and industrial facilities—and outdoor areas with vegetation where fires can spread rapidly.",
+            "p3": "Its goal is to detect, respond to, and mitigate fires before they escalate into larger threats."
+          }
+        },
+        "system": {
+          "subtitle": "How does the system work?",
+          "paragraphs": {
+            "p1": "The system integrates an autonomous vehicle equipped with sensors and fire suppression mechanisms, connected to the network through an application that allows real-time monitoring of its status and operation.",
+            "p2": "Through this platform it is possible to monitor information such as the remaining amount of water or other extinguishing agents, battery status, environmental temperature, and important events including fire detection or leaks of toxic or flammable gases.",
+            "p3": "Early detection is achieved through a network of sensors strategically distributed across the protected area.",
+            "p4": "The system can also automatically communicate with regional emergency services to increase the chances of controlling the fire in time."
+          }
+        },
+        "trajectory": {
+          "subtitle": "Trajectory",
+          "paragraphs": {
+            "p1": "With this project we have participated in several technology competitions, presenting it as an innovative approach to fire prevention.",
+            "p2": "During 2025 the project received regional awards and recognitions in events organized by the Ministry of Science and Technology (MINCYT), where our team was recognized among the most outstanding projects for its technological approach and potential social impact."
+          }
         }
+      }
     }
+  }
 }

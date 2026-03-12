@@ -26,4 +26,5 @@
     height: auto;
     border-radius: var(--radius-lg);
     object-fit: contain;
+    background-color: var(--md-sys-color-surface-variant);
 }
