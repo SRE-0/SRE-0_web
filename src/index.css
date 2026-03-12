@@ -64,6 +64,11 @@
   box-sizing: border-box;
 }
 
+*::selection{
+  background-color: var(--md-sys-color-secondary);
+  color: var(--md-sys-color-on-secondary);
+}
+
 html,
 body {
   margin: 0;
