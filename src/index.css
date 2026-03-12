@@ -29,7 +29,7 @@
   /* Font sizes */
   --text-xs: 0.75rem;    /* 12px */
   --text-sm: 0.875rem;   /* 14px */
-  --text-md: 1.1rem;       /* 16px */
+  --text-md: 1.1rem;     /* 16px */
   --text-lg: 1.25rem;    /* 20px */
   --text-xl: 1.5rem;     /* 24px */
   --text-2xl: 2rem;      /* 32px */
@@ -51,11 +51,37 @@
   --max-width-lg: 1000px;
 }
 
+/*
+  Box-sizing reset — ensures padding and borders are included
+  in the declared width/height of every element.
+  This prevents elements from overflowing their containers.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html,
 body {
   margin: 0;
   min-height: 100vh;  
   height: 100%;
+
+  /*
+    Prevents horizontal scroll caused by elements that are wider
+    than the viewport (e.g. header, footer with full-width backgrounds).
+    This is the core fix for the blank right-side gap on small screens.
+  */
+  overflow-x: hidden;
+
+  /*
+    Constrains all children to the visible viewport width.
+    Without this, 100vw-based widths can still exceed the layout width
+    when a scrollbar is present or content overflows.
+  */
+  width: 100%;
+
   background-color: var(--md-sys-color-background);
   color: var(--md-sys-color-on-background);
   font-family: "Jost", sans-serif;
@@ -77,11 +103,13 @@ body {
   Main layout wrapper.
   - min-height: 100% makes it at least as tall as the viewport.
   - flex column stacks Header, main, and Footer vertically.
+  - width: 100% ensures it never exceeds the viewport width.
 */
 .app-layout {
   display: flex;
   flex-direction: column;
   min-height: 100%;
+  width: 100%;
 }
 
 /* 
@@ -96,11 +124,13 @@ body {
   Header sticks to the top of the viewport when scrolling.
   top: 0 keeps it at the very top edge.
   z-index ensures it renders above page content.
+  width: 100% prevents it from ever being wider than the viewport.
 */
 header {
   position: sticky;
   top: 0;
   z-index: 100;
+  width: 100%;
 }
 
 h1 {

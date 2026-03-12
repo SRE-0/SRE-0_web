@@ -1,17 +1,29 @@
+/*
+  Wrapper that centers the image horizontally.
+  width: 100% ensures it never exceeds its parent container.
+  overflow: hidden clips any content that might still escape.
+*/
 .imageWrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
+    overflow: hidden;
     margin-top: var(--spacing-lg);
 }
 
+/*
+  Image sizing.
+  max-width: 100% is the key fix — prevents the image from being
+  wider than its wrapper when the viewport is small.
+  max-height caps the height on larger screens.
+  width: auto preserves the aspect ratio.
+*/
 .image {
-    
+    max-width: 100%;
     max-height: 300px;
     width: auto;
-
-
+    height: auto;
     border-radius: var(--radius-lg);
     object-fit: contain;
 }

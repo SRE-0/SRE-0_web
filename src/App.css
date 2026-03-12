@@ -1,5 +1,24 @@
-.app-main{
-    max-width: var(--max-width-lg);
-    margin: 0 auto;
-    padding: 0 var(--spacing-lg) var(--spacing-2xl) var(--spacing-lg);
+/*
+  Main content area wrapper.
+  Centers the content horizontally with a max width,
+  and adds horizontal padding so content never touches the screen edges.
+  box-sizing: border-box ensures padding is included in the width calculation,
+  preventing horizontal overflow on small screens.
+*/
+.app-main {
+  max-width: var(--max-width-lg);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg) var(--spacing-2xl) var(--spacing-lg);
+  box-sizing: border-box;
+}
+
+/*
+  On small screens, reduce horizontal padding so content
+  has more room and does not overflow the viewport.
+*/
+@media (max-width: 480px) {
+  .app-main {
+    padding: 0 var(--spacing-md) var(--spacing-2xl) var(--spacing-md);
+  }
 }
