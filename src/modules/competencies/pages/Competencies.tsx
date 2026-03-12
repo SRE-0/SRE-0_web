@@ -83,7 +83,7 @@ export default function Competencies() {
         description=""
       />
 
-      <h2>Gallery</h2>
+      <h2>{t("competencies_projects.project1.body.gallery")}</h2>
       <ImageGrid images={TEAMPYROS_ASSETS.gallery}/>
 
     </div>

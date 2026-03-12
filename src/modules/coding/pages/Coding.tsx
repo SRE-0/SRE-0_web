@@ -7,6 +7,9 @@ import { TEAMPYROS_ASSETS } from '../data/assets/teampyros.assets'
 
 import { useTranslation } from "../../../core/i18n/useTranslation"
 
+import CustomButtom from '../../../core/components/ui/custom_button/CustomButton'
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+
 /*
   Coding Page
 
@@ -46,6 +49,10 @@ export default function Coding() {
       <h2>Screenshots</h2>
 
       <ImageContainer images={TEAMPYROS_ASSETS.screenshots} />
+
+      <h2>{t("coding_projects.donwload")}</h2>
+      <p>{t("coding_projects.donwload_description")}</p>
+      <CustomButtom label="GitHub" icon={faGithub}/>
 
     </div>
   )

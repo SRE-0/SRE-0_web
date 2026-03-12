@@ -1,5 +1,7 @@
 {
     "coding_projects": {
+        "donwload":"Descarga",
+        "donwload_description":"Puedes visitar nuestro GitHub para ver todo el còdigo de esta app.",
         "project1": {
             "title": "GradeBook: Save Your Grades",
             "description": "GradeBook is an Android application that I developed to help students and teachers manage their grades and assignments. The app allows users to create and organize their courses, track their progress, and calculate their final grades based on different grading schemes."
