@@ -55,7 +55,7 @@
 .profile {
   width: 40px;
   height: 40px;
-  margin-right: 34px;
+  margin-right: 30px;
   border-radius: var(--radius-xl);
   object-fit: cover;
   border: 1.8px solid color-mix(in srgb, var(--md-sys-color-outline-variant) 50%, transparent);

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { ROUTES } from "../../../router/routes.constants";
 import styles from "./Header.module.css";
-import profile from "../../../../assets/images/profile/profile.jpg";
+import profile from "../../../../assets/images/profile/profile.webp";
 import HamburgerIcon from "./HamburgerIcon";
 import SideDrawer from "../side_drawer/SideDrawer";
 
