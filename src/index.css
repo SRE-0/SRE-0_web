@@ -3,7 +3,10 @@
    Colors are intentionally absent here — use tokens.css variables instead.
    ========================================================================== */
 
+/*
 @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+*/
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Jost:ital,wght@0,100..900;1,100..900&family=Roboto+Flex:opsz,wght,XOPQ,XTRA,YOPQ,YTDE,YTFI,YTLC,YTUC@8..144,100..1000,96,468,79,-203,738,514,712&display=swap');
 
 /* 
   Global design tokens.
@@ -42,6 +45,7 @@
   --font-midsemibold: 500;
   --font-semibold: 600;
   --font-bold: 700;
+  --font-ultra-bold: 800;
 
   /* Line heights */
   --leading-tight: 1;
@@ -62,6 +66,9 @@
 *::before,
 *::after {
   box-sizing: border-box;
+
+  /* Smooth theme transitions */
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 *::selection{
@@ -92,6 +99,7 @@ body {
   background-color: var(--md-sys-color-background);
   color: var(--md-sys-color-on-background);
   font-family: "Jost", sans-serif;
+  font-optical-sizing: auto;
   line-height: var(--leading-normal);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -141,17 +149,28 @@ header {
 }
 
 h1 {
-    margin: var(--spacing-xl) 0 var(--spacing-xl) 0;
-    text-align: center;
-    font-weight: var(--font-regular);
+  font-family: "Bricolage Grotesque", sans-serif;
+  margin: var(--spacing-2xl) 0 var(--spacing-xl) 0;
+  text-align: center;
+  font-weight: var(--font-ultra-bold);
+  color: var(--md-sys-color-secondary);
 }
 
 h2 {
-    margin: var(--spacing-2xl) 0 0 0;
-    line-height: var(--leading-tight);
-    font-weight: var(--font-regular);
-    font-size: var(--text-2xl);
-    text-align: left;
+  font-family: "Bricolage Grotesque", sans-serif;
+  margin: var(--spacing-2xl) 0 0 0;
+  line-height: var(--leading-tight);
+  font-weight: var(--font-regular);
+  font-size: var(--text-2xl);
+
+  color: var(--md-sys-color-secondary);
+}
+
+h3 {
+  font-family: "Bricolage Grotesque", sans-serif;
+  line-height: var(--leading-tight);
+  font-size: var(--text-lg);
+  font-weight: var(--font-regular);
 }
 
 p {

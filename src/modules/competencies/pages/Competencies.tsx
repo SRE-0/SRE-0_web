@@ -29,14 +29,14 @@ export default function Competencies() {
   return (
     <div>
 
-      {/* Page Title */}
-      <h1>{t("competencies_projects.project1.title")}</h1>
-
+      
       {/* Header image */}
       <HeaderImage
         image={TEAMPYROS_ASSETS.header}
         description=""
       />
+{/* Page Title */}
+      <h1>{t("competencies_projects.project1.title")}</h1>
 
       <p>{t("competencies_projects.project1.body.about.paragraphs.p1")}</p>
       <p>{t("competencies_projects.project1.body.about.paragraphs.p2")}</p>

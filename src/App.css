@@ -9,7 +9,7 @@
   max-width: var(--max-width-lg);
   width: 100%;
   margin: 0 auto;
-  padding: 0 var(--spacing-lg) var(--spacing-2xl) var(--spacing-lg);
+  padding: var(--spacing-2xl) var(--spacing-lg) var(--spacing-2xl) var(--spacing-lg);
   box-sizing: border-box;
 }
 
@@ -19,6 +19,6 @@
 */
 @media (max-width: 480px) {
   .app-main {
-    padding: 0 var(--spacing-md) var(--spacing-2xl) var(--spacing-md);
+    padding: var(--spacing-2xl) var(--spacing-md) var(--spacing-2xl) var(--spacing-md);
   }
 }

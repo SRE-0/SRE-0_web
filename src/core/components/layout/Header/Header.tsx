@@ -68,6 +68,12 @@ function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.brand}>
+        <NavLink to={ROUTES.HOME} className={styles.logoLink}>
+          <span className={styles.logo}>
+            <span className={styles.logoHighlight}>Sergio</span> Pérez
+          </span>
+        </NavLink>
+        
         {/* Hamburger button — only visible on mobile via CSS */}
         <button
           className={styles.hamburger}
@@ -77,10 +83,6 @@ function Header() {
         >
           <HamburgerIcon isOpen={menuOpen} />
         </button>
-        
-        <NavLink to={ROUTES.HOME} className={styles.logoLink}>
-          <span className={styles.logo}>Sergio Perez</span>
-        </NavLink>
       </div>
 
       <nav className={`${styles.nav} ${menuOpen ? styles.navOpen : ""}`}>

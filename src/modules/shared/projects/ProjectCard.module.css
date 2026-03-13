@@ -17,10 +17,15 @@
     gap: var(--spacing-xs);
 }
 
+.text_title1 {
+    margin: 0px;
+
+  font-size: var(--text-lg);
+  font-weight: var(--font-midsemibold);
+}
+
 .text_title {
     margin: 0;
-    font-size: var(--text-lg);
-    font-weight: var(--font-semibold);
 }
 
 .text_description {

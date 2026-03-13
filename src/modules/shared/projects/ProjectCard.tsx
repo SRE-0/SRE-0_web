@@ -5,6 +5,7 @@ import styles from "./ProjectCard.module.css";
 
 interface ProjectCardProps {
   title:       string;
+  title1:       string;
   description: string;
   image:       string;
   tags:        string[];
@@ -24,7 +25,7 @@ interface ProjectCardProps {
  * - tags:        list of technology tags
  * - route:       full route string for the detail page link
  */
-function ProjectCard({ title, description, image, route }: ProjectCardProps) {
+function ProjectCard({ title, title1 = "", description, image, route }: ProjectCardProps) {
   return (
     <Link to={route} className={styles.card}>
       <div className={styles.image_container}>
@@ -35,7 +36,12 @@ function ProjectCard({ title, description, image, route }: ProjectCardProps) {
         />
       </div>
       <div className={styles.text_container}>
-        <h3 className={styles.text_title}>{title}</h3>
+        <h3 className={styles.text_title}>
+          <h3 className={styles.text_title1}>
+            {title}
+          </h3>
+          {title1}
+        </h3>
         <p className={styles.text_description}>{description}</p>
       </div>
     </Link>

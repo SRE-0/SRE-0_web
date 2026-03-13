@@ -1,6 +1,14 @@
+/* ==========================================================================
+   Header component styles.
+   Handles layout for brand, navigation tabs, and mobile hamburger menu.
+   Supports theme-color sync for mobile browser chrome via CSS custom properties.
+   ========================================================================== */
+
 /*
  * Main header container.
- * Column layout to stack brand and nav vertically.
+ * Uses a frosted-glass effect with backdrop-filter blur.
+ * Stacks brand row and nav row vertically via column flex layout.
+ * position: sticky keeps the header visible while scrolling.
  */
 .header {
   display: flex;
@@ -8,39 +16,92 @@
   align-items: center;
   justify-content: center;
   height: auto;
-  background-color:  color-mix(in srgb, var(--md-sys-color-primary) 100%, transparent);
-  overflow: hidden; /* clips nav when tabs don't fit */  
-  -webkit-backdrop-filter: blur(15px);
-  backdrop-filter: blur(15px);
-  color: var(--md-sys-color-on-primary);
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  overflow: hidden;
+
+  background-color: color-mix(in srgb, var(--md-sys-color-surface-container) 85%, transparent);
+  color: var(--md-sys-color-on-surface);
+
+  /* Frosted glass border at the bottom */
+  border-bottom: 1px solid color-mix(in srgb, var(--md-sys-color-outline-variant) 50%, transparent);
+
+  /* Shadow to separate header from page content */
+  box-shadow: 0 1px 4px color-mix(in srgb, var(--md-sys-color-shadow) 8%, transparent);
+
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  backdrop-filter: blur(20px) saturate(1.4);
 }
+
+/* --------------------------------------------------------------------------
+   Brand row — logo on the left, optional actions on the right
+   -------------------------------------------------------------------------- */
 
 /*
  * Brand/logo wrapper.
+ * Space-between distributes logo and any right-side elements (e.g. hamburger).
+ * max-width matches nav so both rows stay horizontally aligned.
  */
 .brand {
+  width: 100%;
+  padding: var(--spacing-md);
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin-bottom: var(--spacing-sm);
-  margin-top: var(--spacing-md);
-}
-
-.logo {
-  font-size: var(--text-lg);
-  font-weight: var(--font-regular);
-  
-}
-
-.logoLink {
-  text-decoration: none;
-  color: inherit;
+  justify-content: space-between;
 }
 
 /*
+ * Logo text — uses a display font for brand personality.
+ * font-weight kept light so the logoHighlight span stands out clearly.
+ */
+.logo {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: var(--text-lg);
+  font-weight: var(--font-regular);
+  color: var(--md-sys-color-on-surface);
+  letter-spacing: -0.01em;
+}
+
+/*
+ * Highlighted portion of the logo (e.g. brand name suffix).
+ * Bolder weight and primary color to create visual emphasis.
+ */
+.logoHighlight {
+  font-size: var(--text-lg);
+  font-weight: var(--font-midsemibold);
+  color: var(--md-sys-color-primary);
+}
+
+/*
+ * Anchor wrapper around the logo.
+ * Removes default link styles so the logo looks like plain text.
+ */
+.logoLink {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+
+  /* Subtle scale on hover for interactivity feedback */
+  transition: opacity 0.2s ease;
+}
+
+.logoLink:hover {
+  opacity: 0.8;
+}
+
+/* --------------------------------------------------------------------------
+   Navigation tabs
+   -------------------------------------------------------------------------- */
+
+/*
  * Navigation tab container.
- * Stretches to full header width so tabs can distribute evenly.
- * overflow: hidden hides tabs that don't fit instead of wrapping.
+ * Stretches to full header width (capped at max-width-sm) so tabs
+ * distribute evenly. overflow: hidden hides any tab that doesn't fit
+ * instead of causing a line break.
  */
 .nav {
   display: flex;
@@ -52,112 +113,171 @@
 }
 
 /*
- * Individual nav tab.
- * flex: 1 makes each tab grow equally to fill the available width.
- * text-align: center keeps the label centered inside each tab.
- * white-space: nowrap prevents label text from wrapping to a second line.
- * min-width: 0 allows flex shrink to work correctly when space is tight.
+ * Individual nav tab link.
+ *
+ * flex: 1          — each tab grows equally to fill available width.
+ * min-width: 0     — allows flex shrink to work when space is tight.
+ * white-space: nowrap — prevents label from wrapping to a second line.
+ * border-radius    — rounded top corners for a tab-style appearance.
+ *
+ * The ::after pseudo-element renders an animated indicator line
+ * that slides in from the left on hover.
  */
 .navLink {
   flex: 1;
-  font-weight: var(--font-semibold);
+  min-width: 0;
   position: relative;
   text-align: center;
   padding: 12px var(--spacing-xs);
-  border-radius: var(--radius-lg) var(--radius-lg) 0  0;
-  color: var(--md-sys-color-on-primary);
-  text-decoration: none;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+
   font-size: var(--text-sm);
-  transition: background-color 0.2s, color 0.2s;
+  font-weight: var(--font-semibold);
+  white-space: nowrap;
+  text-decoration: none;
+
+  color: var(--md-sys-color-on-surface-variant);
+
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* Animated bottom line */
+/*
+ * Animated bottom indicator line.
+ * Starts hidden (scaleX 0) and slides in from the left on hover/active.
+ * Uses primary color to match Material Design active state conventions.
+ */
 .navLink::after {
   content: "";
   position: absolute;
   left: 0;
   bottom: 0;
-
   width: 100%;
   height: 3px;
-
-  background: var(--md-sys-color-on-primary);
-
-  /* Line starts hidden */
+  border-radius: 3px 3px 0 0;
+  background: var(--md-sys-color-primary);
   transform: scaleX(0);
-
-  /* Animation grows from the left */
   transform-origin: left;
-
-  /* Smooth animation */
-  transition: transform 0.3s ease;
+  transition: transform 0.25s ease;
 }
 
-/* Hover state */
+/* Hover state — subtle surface tint + full-color text */
 .navLink:hover {
-  background-color: #0000000f;
-  color: var(--md-sys-color-on-primary);
+  background-color: color-mix(in srgb, var(--md-sys-color-on-surface) 6%, transparent);
+  color: var(--md-sys-color-on-surface);
 }
 
-/* Animate the line */
+/* Slide the indicator line in on hover */
 .navLink:hover::after {
   transform: scaleX(1);
 }
 
 /*
-.active {
-  background-color: var(--md-sys-color-surface-container-high);
+ * Active tab state — applied via className in the component.
+ * Shows a persistent indicator line and uses on-surface color.
+ */
+.navLinkActive {
   color: var(--md-sys-color-on-surface);
-  border-bottom: 3px solid var(--md-sys-color-primary);
-}*/
+  background-color: color-mix(in srgb, var(--md-sys-color-on-surface) 8%, transparent);
+}
 
+.navLinkActive::after {
+  transform: scaleX(1);
+}
 
-/* ... tu css existente sin cambios ... */
+/* --------------------------------------------------------------------------
+   Hamburger button — mobile only
+   -------------------------------------------------------------------------- */
 
 /*
- * Hamburger button — hidden on large screens, visible on mobile.
- * Only rendered in the DOM when screen is small.
+ * Hamburger toggle button.
+ * Hidden on desktop via display: none.
+ * Uses secondary color scheme to match the header background tint.
+ * Revealed only inside the mobile media query below.
  */
 .hamburger {
   display: none;
-  background: none;
-  border: none;
+  align-items: center;
+  justify-content: center;
+
+  background-color: color-mix(in srgb, var(--md-sys-color-secondary-container) 60%, transparent);
+  border-radius: var(--radius-xl);
+  border: 1px solid color-mix(in srgb, var(--md-sys-color-outline-variant) 10%, transparent);
   cursor: pointer;
-  padding: var(--spacing-sm);
-  color: var(--md-sys-color-on-primary);
+  padding: var(--spacing-sm) var(--spacing-lg);
+
+  color: var(--md-sys-color-on-secondary-container);
+
+  transition: background-color 0.2s ease, transform 0.15s ease;
 }
 
+.hamburger:hover {
+  background-color: var(--md-sys-color-secondary-container);
+}
+
+.hamburger:active {
+  transform: scale(0.96);
+}
+
+/* --------------------------------------------------------------------------
+   Mobile breakpoint
+   -------------------------------------------------------------------------- */
+
 /*
- * Mobile breakpoint — hides nav tabs and shows hamburger button.
+ * At 480px and below:
+ * - Hamburger button becomes visible.
+ * - Nav collapses to max-height 0 and expands when .navOpen is applied.
+ * - Each nav link goes full-width and loses the tab border-radius.
  */
 @media (max-width: 480px) {
-  
 
   .hamburger {
     display: flex;
-    align-items: center;
-    justify-content: center;
   }
 
   /*
-   * Nav is hidden by default on mobile.
-   * When .navOpen is added to the nav, it expands vertically.
+   * Nav hidden by default on mobile.
+   * Animated open/close via max-height transition.
+   * max-height: 0 + overflow: hidden = visually collapsed.
+   * max-height: 400px = fully expanded (adjust if you have more tabs).
    */
   .nav {
     max-height: 0;
     overflow: hidden;
     flex-direction: column;
-    transition: max-height 0.3s ease;
+    width: 100%;
+    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .navOpen {
-    max-height: 300px;
+    max-height: 400px;
   }
 
+  /* Full-width links with no tab rounding on mobile */
   .navLink {
     width: 100%;
     text-align: center;
     border-radius: 0;
     padding: var(--spacing-sm) 0;
+
+    /* Subtle divider between mobile nav items */
+    border-bottom: 1px solid color-mix(in srgb, var(--md-sys-color-outline-variant) 30%, transparent);
+  }
+
+  /* Remove bottom border from last item */
+  .navLink:last-child {
+    border-bottom: none;
+  }
+
+  /* Indicator line hidden on mobile — full-width highlight is used instead */
+  .navLink::after {
+    display: none;
+  }
+
+  /* Mobile active state uses a left border accent instead */
+  .navLinkActive {
+    border-left: 3px solid var(--md-sys-color-primary);
+    padding-left: calc(var(--spacing-sm) - 3px);
+    background-color: color-mix(in srgb, var(--md-sys-color-primary-container) 40%, transparent);
+    color: var(--md-sys-color-on-surface);
   }
 }
