@@ -1,4 +1,5 @@
 // modules/coding/data/assets/teampyros.assets.ts
+import type { ProjectImageItem } from "../../../shared/types/project-assets.types";
 
 import header           from "../../../../assets/images/projects/teampyros/teampyros_80.webp";
 import team             from "../../../../assets/images/projects/teampyros/images/team.jpg";
@@ -9,14 +10,6 @@ import team3            from "../../../../assets/images/projects/teampyros/image
 import team4            from "../../../../assets/images/projects/teampyros/images/team4.jpg";
 import team5            from "../../../../assets/images/projects/teampyros/images/team5.jpg";
 import car              from "../../../../assets/images/projects/teampyros/images/e.webp";
-
-
-// Reusable type for a single image entry with a description.
-// Must match the ImageItem type expected by ImageGrid and ImageContainer.
-export interface ProjectImageItem {
-  image:       string;
-  description: string;
-}
 
 // Shape of a project's complete asset bundle.
 export interface ProjectAssets {

@@ -1,5 +1,7 @@
 {
     "coding_projects": {
+        "github_button":"Github",
+        "screenshots":"Screenshots",
         "donwload":"Donwload",
         "donwload_description":"You can visit our GitHub page to see the full source code of this app.",
         "project1": {

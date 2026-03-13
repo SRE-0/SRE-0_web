@@ -5,15 +5,10 @@ import type { EmbeddedLink } from "../../../../core/i18n/TranslatedText"
 
 //use projects list
 import { useCodingProjects }      from "../../../coding/hooks/useCodingProjects";
-//import { useCompetencyProjects }  from "../../competencies/hooks/useCompetencyProjects";
+import { useCompetencyProjects }  from "../../../competencies/hooks/useCompetenciesProject";
 import ProjectCard from "../../../shared/projects/ProjectCard"
+
 /*
-// Import images so Vite can process and optimize them
-import teamImage from "../../../../assets/images/projects/teampyros/teampyros_35.webp"
-import teamApp from "../../../../assets/images/projects/teampyros/app/teampyros_app_35.webp"
-import gradebook from "../../../../assets/images/projects/gradebook/gradebook_35.webp"
-
-
   HomeProjects renders the projects section of the home page.
   Displays a grid of HomeCard components, one per project.
 */
@@ -21,8 +16,7 @@ export default function HomeProjects() {
   const { t } = useTranslation("home")
 
   const projects = useCodingProjects();
-  //const codingProjects     = useCodingProjects();
-  //const competencyProjects = useCompetencyProjects();
+  const competencyProjects = useCompetencyProjects();
 
 
   const projectsLinks: EmbeddedLink[] = [
@@ -42,6 +36,10 @@ export default function HomeProjects() {
 
       <div className={styles.grid}>
         {projects.map((project) => (
+          <ProjectCard key={project.id} {...project} />
+        ))}
+        
+        {competencyProjects.map((project) => (
           <ProjectCard key={project.id} {...project} />
         ))}
       </div>

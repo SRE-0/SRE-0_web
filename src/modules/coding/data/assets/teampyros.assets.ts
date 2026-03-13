@@ -1,4 +1,5 @@
 // modules/coding/data/assets/teampyros.assets.ts
+import type { ProjectImageItem } from "../../../shared/types/project-assets.types";
 
 import header           from "../../../../assets/images/projects/teampyros/app/teampyros_app.webp";
 
@@ -6,14 +7,6 @@ import appHome          from "../../../../assets/images/projects/teampyros/app/h
 import appHomeDark      from "../../../../assets/images/projects/teampyros/app/home_dark.webp";
 import appHistory       from "../../../../assets/images/projects/teampyros/app/history.webp";
 import appHistoryDark   from "../../../../assets/images/projects/teampyros/app/history_dark.webp";
-
-
-// Reusable type for a single image entry with a description.
-// Must match the ImageItem type expected by ImageGrid and ImageContainer.
-export interface ProjectImageItem {
-  image:       string;
-  description: string;
-}
 
 // Shape of a project's complete asset bundle.
 export interface ProjectAssets {

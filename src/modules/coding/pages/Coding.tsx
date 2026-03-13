@@ -52,7 +52,12 @@ export default function Coding() {
 
       <h2>{t("coding_projects.donwload")}</h2>
       <p>{t("coding_projects.donwload_description")}</p>
-      <CustomButtom label="GitHub" icon={faGithub}/>
+
+      <CustomButtom 
+        label="GitHub" 
+        icon={faGithub}
+        href='https://github.com/SRE-0'
+        />
 
     </div>
   )

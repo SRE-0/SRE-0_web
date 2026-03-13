@@ -1,8 +1,8 @@
 // modules/coding/pages/CodingDetail.tsx
 
 import { useParams }         from "react-router-dom";
-import { useCodingProjects } from "../hooks/useCodingProjects";
-import styles                from "./CodingDetail.module.css";
+import { CODING_PROJECTS } from "../data/coding.registry";
+import ProjectRenderer           from "../../shared/project-renderer/ProjectRenderer";
 
 /*
  * CodingDetail
@@ -12,24 +12,17 @@ import styles                from "./CodingDetail.module.css";
  */
 function CodingDetail() {
   const { slug }   = useParams<{ slug: string }>();
-  const projects   = useCodingProjects();
-  const project    = projects.find((p) => p.slug === slug);
+  const project    = CODING_PROJECTS.find((p) => p.slug === slug);
 
   if (!project) {
     return <p>Project not found.</p>;
   }
 
   return (
-    <main className={styles.page}>
-      <img src={project.image} alt={project.title} className={styles.image} />
-      <h1 className={styles.title}>{project.title}</h1>
-      <ul className={styles.tags}>
-        {project.tags.map((tag) => (
-          <li key={tag} className={styles.tag}>{tag}</li>
-        ))}
-      </ul>
-      <p className={styles.body}>{project.body}</p>
-    </main>
+    <ProjectRenderer
+      sections={project.schema}
+      namespace="coding"
+    />
   );
 }
 export default CodingDetail;

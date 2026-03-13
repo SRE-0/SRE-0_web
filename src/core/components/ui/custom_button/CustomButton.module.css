@@ -10,7 +10,8 @@
     padding: 12px 18px;
     font-weight: 550;
     cursor: pointer;
-    transition: border-radius 0.15s linear, opacity 0.15s linear;
+    text-decoration: none;
+    transition: border-radius 0.1s linear, opacity 0.1s linear;
 }
 
 .customButton:hover {

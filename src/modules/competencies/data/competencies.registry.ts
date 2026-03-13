@@ -1,32 +1,37 @@
-// modules/coding/data/coding.registry.ts
+// modules/competencies/data/competencies.registry.ts
 
-import { buildRoute } from "../../../core/router/routes.constants";
+import { buildRoute }           from "../../../core/router/routes.constants";
+import { TEAMPYROS_SCHEMA }     from "./schemas/teampyros.schema";
+import type { ProjectSection }   from "../../shared/types/project-schema.types";
 
-export interface CodingProject {
+import imgTeampyros from "../../../assets/images/projects/teampyros/teampyros_35.webp";
+
+export interface CompetencyProject {
   id:          string;
   slug:        string;
-  image:       string;         // path relativo desde /public
+  image:       string;
   tags:        string[];
   route:       string;
-  // i18n keys — apuntan a las claves en locales/*/coding.json
+  schema:      ProjectSection[];   // ordered content blocks
   i18nKeys: {
     title:       string;
     description: string;
+    body:        string;
   };
 }
 
-//TODO cambiar los nombres y datos de cada proyecto, incluyendo traducciones
-
-export const CODING_PROJECTS: CodingProject[] = [
+export const COMPETENCY_PROJECTS: CompetencyProject[] = [
   {
-    id:    "project-gradebook",
-    slug:  "Gradebook",
-    image: "src/assets/images/projects/gradebook/gradebook_35.webp",
-    tags:  ["TypeScript", "CLI"],
-    route: buildRoute.codingDetail("gradebook"),
+    id:     "teampyros",
+    slug:   "teampyros",
+    image:  imgTeampyros,
+    tags:   ["Robotics", "Firebase", "Android"],
+    route:  buildRoute.competencyDetail("teampyros"),
+    schema: TEAMPYROS_SCHEMA,
     i18nKeys: {
-      title:       "coding_projects.project1.title",
-      description: "coding_projects.project1.description",
+      title:       "competencies_projects.project1.title",
+      description: "competencies_projects.project1.description",
+      body:        "competencies_projects.project1.description"
     },
   },
 ];

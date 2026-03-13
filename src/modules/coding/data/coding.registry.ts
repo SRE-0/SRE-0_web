@@ -1,55 +1,49 @@
-// modules/coding/data/coding.registry.ts
-
 import { buildRoute } from "../../../core/router/routes.constants";
+import { TEAMPYROS_APP_SCHEMA } from "./schemas/teampyros-app.schema";
+import type { ProjectSection } from "../../shared/types/project-schema.types";
 
-
-// ---------------------------------------------------------------------------
-// Project images — imported as modules so Vite processes them and generates
-// correct absolute URLs in both dev and production (GitHub Pages).
-// Never use raw "src/assets/..." strings for images in Vite projects.
-// ---------------------------------------------------------------------------
-import imgGradebook from "../../../assets/images/projects/gradebook/gradebook_35.webp";
+import imgGradebook    from "../../../assets/images/projects/gradebook/gradebook_35.webp";
 import imgTeampyrosApp from "../../../assets/images/projects/teampyros/app/teampyros_app_35.webp";
 
 export interface CodingProject {
-  id:          string;
-  slug:        string;
-  image:       string;         // path relativo desde /public
-  tags:        string[];
-  route:       string;
-  // i18n keys — apuntan a las claves en locales/*/coding.json
+  id:     string;
+  slug:   string;
+  image:  string;
+  tags:   string[];
+  route:  string;
+  schema: ProjectSection[];
   i18nKeys: {
     title:       string;
     description: string;
-    body:        string; 
+    body:        string;
   };
 }
-
-//TODO cambiar los nombres y datos de cada proyecto, incluyendo traducciones
 
 export const CODING_PROJECTS: CodingProject[] = [
   {
     id:    "project-gradebook",
-    slug:  "Gradebook",
+    slug:  "gradebook",           // lowercase — must match buildRoute exactly
     image: imgGradebook,
-    tags:  ["TypeScript", "CLI"],
+    tags:  ["Android", "Java"],
     route: buildRoute.codingDetail("gradebook"),
+    schema: TEAMPYROS_APP_SCHEMA,
     i18nKeys: {
       title:       "coding_projects.project1.title",
       description: "coding_projects.project1.description",
-      body: "coding_projects.project2.body",
+      body:        "coding_projects.project1.body",
     },
   },
   {
-     id:    "project-teampyros-app",
-    slug:  "Teampyros-App",
+    id:    "project-teampyros-app",
+    slug:  "teampyros-app",       // lowercase — must match buildRoute exactly
     image: imgTeampyrosApp,
-    tags:  ["React", "Node", "PostgreSQL"],
+    tags:  ["Android", "Firebase"],
     route: buildRoute.codingDetail("teampyros-app"),
+    schema: TEAMPYROS_APP_SCHEMA,
     i18nKeys: {
       title:       "coding_projects.project2.title",
       description: "coding_projects.project2.description",
-      body: "coding_projects.project2.body",
+      body:        "coding_projects.project2.body",
     },
   },
 ];
