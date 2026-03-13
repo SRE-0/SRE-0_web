@@ -2,108 +2,89 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { ROUTES } from "../../../router/routes.constants";
 import styles from "./Header.module.css";
-import profile from "../../../../assets/images/profile/profile.jpg"
-
-//import ThemeToggle from "../../ui/theme_toggle/ThemeToggle";
+import profile from "../../../../assets/images/profile/profile.jpg";
+import HamburgerIcon from "./HamburgerIcon";
+import SideDrawer from "../side_drawer/SideDrawer";
 
 /**
- * NAV_LINKS
- * Driven by ROUTES constants instead of hardcoded strings.
+ * HEADER_NAV_LINKS
+ * Links shown as horizontal tabs in the desktop header.
+ * This is intentionally a subset of ALL_NAV_LINKS in SideDrawer —
+ * only the most important sections appear in the tab bar.
  * To add a new tab: add the route in routes.constants.ts first,
  * then add the entry here.
  */
-const NAV_LINKS = [
+const HEADER_NAV_LINKS = [
   { label: "Coding",       path: ROUTES.CODING },
   { label: "Competencies", path: ROUTES.COMPETENCIES },
   { label: "About",        path: ROUTES.ABOUT },
 ];
 
 /**
- * HamburgerIcon
- * Renders either a hamburger (three lines) or a close (X) icon
- * depending on whether the menu is open.
- * @param isOpen - controls which icon is displayed
- */
-function HamburgerIcon({ isOpen }: { isOpen: boolean }) {
-  return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-    >
-      {isOpen ? (
-        // X icon — close menu
-        <>
-          <line x1="18" y1="6" x2="6" y2="18" />
-          <line x1="6" y1="6" x2="18" y2="18" />
-        </>
-      ) : (
-        // Hamburger icon — open menu
-        <>
-          <line x1="3" y1="6"  x2="21" y2="6"  />
-          <line x1="3" y1="12" x2="21" y2="12" />
-          <line x1="3" y1="18" x2="21" y2="18" />
-        </>
-      )}
-    </svg>
-  );
-}
-
-/**
  * Header
  * Global navigation header rendered on every page.
- * On large screens: shows nav tabs horizontally.
- * On small screens: hides nav and shows a hamburger toggle button.
- * No props required — navigation items are defined in NAV_LINKS above.
+ *
+ * Desktop: shows horizontal nav tabs.
+ * Mobile: hides tabs and shows a hamburger button that opens a SideDrawer
+ *         with the full navigation (ALL_NAV_LINKS defined inside SideDrawer).
+ *
+ * No props required — all navigation items are defined in their respective
+ * link constant arrays.
  */
 function Header() {
-  // Controls whether the mobile nav is expanded or collapsed
-  const [menuOpen, setMenuOpen] = useState(false);
+  // Controls whether the SideDrawer is open
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
-  // Closes the menu when a nav link is clicked
-  const handleNavClick = () => setMenuOpen(false);
+  const openDrawer  = () => setDrawerOpen(true);
+  const closeDrawer = () => setDrawerOpen(false);
 
   return (
-    <header className={styles.header}>
-      <div className={styles.brand}>
+    <>
+      <header className={styles.header}>
+        <div className={styles.brand}>
 
-        <img src={profile} alt="" className={styles.profile}/>
-        <NavLink to={ROUTES.HOME} className={styles.logoLink}>
-          <span className={styles.logo}>
-            <span className={styles.logoHighlight}>Sergio</span> Pérez
-          </span>
-        </NavLink>
-        
-        {/* Hamburger button — only visible on mobile via CSS */}
-        <button
-          className={styles.hamburger}
-          onClick={() => setMenuOpen(prev => !prev)}
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
-          aria-expanded={menuOpen}
-        >
-          <HamburgerIcon isOpen={menuOpen} />
-        </button>
-      </div>
+          <img src={profile} alt="Profile picture" className={styles.profile} />
 
-      <nav className={`${styles.nav} ${menuOpen ? styles.navOpen : ""}`}>
-        {NAV_LINKS.map(({ label, path }) => (
-          <NavLink
-            key={path}
-            to={path}
-            className={({ isActive }) =>
-              `${styles.navLink} ${isActive ? styles.active : ""}`
-            }
-            onClick={handleNavClick}
-          >
-            {label}
+          <NavLink to={ROUTES.HOME} className={styles.logoLink}>
+            <span className={styles.logo}>
+              <span className={styles.logoHighlight}>Sergio</span> Pérez
+            </span>
           </NavLink>
-        ))}
-      </nav>
-    </header>
+
+          {/* Hamburger button — visible on mobile, opens the SideDrawer */}
+          <button
+            className={styles.hamburger}
+            onClick={openDrawer}
+            aria-label="Open navigation menu"
+            aria-expanded={drawerOpen}
+            aria-controls="side-drawer"
+          >
+            <HamburgerIcon isOpen={drawerOpen} />
+          </button>
+        </div>
+
+        {/* Desktop horizontal tab navigation */}
+        <nav className={styles.nav} aria-label="Main navigation">
+          {HEADER_NAV_LINKS.map(({ label, path }) => (
+            <NavLink
+              key={path}
+              to={path}
+              className={({ isActive }) =>
+                `${styles.navLink} ${isActive ? styles.navLinkActive : ""}`
+              }
+            >
+              {label}
+            </NavLink>
+          ))}
+        </nav>
+      </header>
+
+      {/* Side drawer — rendered outside <header> to avoid z-index/stacking issues */}
+      <SideDrawer
+        isOpen={drawerOpen}
+        onClose={closeDrawer}
+      />
+    </>
   );
 }
 

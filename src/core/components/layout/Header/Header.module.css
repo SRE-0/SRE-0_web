@@ -1,7 +1,7 @@
 /* ==========================================================================
    Header component styles.
-   Handles layout for brand, navigation tabs, and mobile hamburger menu.
-   Supports theme-color sync for mobile browser chrome via CSS custom properties.
+   Handles layout for brand, navigation tabs, and mobile hamburger button.
+   On mobile, the hamburger opens a SideDrawer — the nav tabs are hidden.
    ========================================================================== */
 
 /*
@@ -49,15 +49,15 @@
   padding: var(--spacing-md);
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .profile {
   width: 40px;
   height: 40px;
-  margin-right: var(--spacing-md);
+  margin-right: 34px;
   border-radius: var(--radius-xl);
   object-fit: cover;
-  /* Frosted glass border at the bottom */
   border: 1.8px solid color-mix(in srgb, var(--md-sys-color-outline-variant) 50%, transparent);
 }
 
@@ -103,7 +103,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   Navigation tabs
+   Navigation tabs — desktop only
    -------------------------------------------------------------------------- */
 
 /*
@@ -184,6 +184,7 @@
  * Active tab state — applied via className in the component.
  * Shows a persistent indicator line and uses on-surface color.
  */
+/*
 .navLinkActive {
   color: var(--md-sys-color-on-surface);
   background-color: color-mix(in srgb, var(--md-sys-color-on-surface) 8%, transparent);
@@ -191,7 +192,7 @@
 
 .navLinkActive::after {
   transform: scaleX(1);
-}
+}*/
 
 /* --------------------------------------------------------------------------
    Hamburger button — mobile only
@@ -200,11 +201,10 @@
 /*
  * Hamburger toggle button.
  * Hidden on desktop via display: none.
- * Uses secondary color scheme to match the header background tint.
  * Revealed only inside the mobile media query below.
  */
 .hamburger {
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
 
@@ -234,63 +234,15 @@
 /*
  * At 480px and below:
  * - Hamburger button becomes visible.
- * - Nav collapses to max-height 0 and expands when .navOpen is applied.
- * - Each nav link goes full-width and loses the tab border-radius.
+ * - Desktop nav tabs are hidden — SideDrawer handles mobile navigation.
  */
 @media (max-width: 480px) {
-
-  .hamburger {
-    display: flex;
-  }
-
   .brand {
     justify-content: space-between;
   }
 
-  /*
-   * Nav hidden by default on mobile.
-   * Animated open/close via max-height transition.
-   * max-height: 0 + overflow: hidden = visually collapsed.
-   * max-height: 400px = fully expanded (adjust if you have more tabs).
-   */
+  /* Hide desktop tab nav on mobile — SideDrawer takes over */
   .nav {
-    max-height: 0;
-    overflow: hidden;
-    flex-direction: column;
-    width: 100%;
-    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .navOpen {
-    max-height: 400px;
-  }
-
-  /* Full-width links with no tab rounding on mobile */
-  .navLink {
-    width: 100%;
-    text-align: center;
-    border-radius: 0;
-    padding: var(--spacing-sm) 0;
-
-    /* Subtle divider between mobile nav items */
-    border-bottom: 1px solid color-mix(in srgb, var(--md-sys-color-outline-variant) 30%, transparent);
-  }
-
-  /* Remove bottom border from last item */
-  .navLink:last-child {
-    border-bottom: none;
-  }
-
-  /* Indicator line hidden on mobile — full-width highlight is used instead */
-  .navLink::after {
     display: none;
-  }
-
-  /* Mobile active state uses a left border accent instead */
-  .navLinkActive {
-    border-left: 3px solid var(--md-sys-color-primary);
-    padding-left: calc(var(--spacing-sm) - 3px);
-    background-color: color-mix(in srgb, var(--md-sys-color-primary-container) 40%, transparent);
-    color: var(--md-sys-color-on-surface);
   }
 }
