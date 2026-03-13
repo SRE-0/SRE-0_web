@@ -14,6 +14,7 @@ export interface CodingProject {
   schema: ProjectSection[];
   i18nKeys: {
     title:       string;
+    title1:       string;
     description: string;
     body:        string;
   };
@@ -29,6 +30,7 @@ export const CODING_PROJECTS: CodingProject[] = [
     schema: TEAMPYROS_APP_SCHEMA,
     i18nKeys: {
       title:       "coding_projects.project1.title",
+      title1:       "coding_projects.project1.title1",
       description: "coding_projects.project1.description",
       body:        "coding_projects.project1.body",
     },
@@ -42,6 +44,7 @@ export const CODING_PROJECTS: CodingProject[] = [
     schema: TEAMPYROS_APP_SCHEMA,
     i18nKeys: {
       title:       "coding_projects.project2.title",
+      title1:       "coding_projects.project2.title1",
       description: "coding_projects.project2.description",
       body:        "coding_projects.project2.body",
     },

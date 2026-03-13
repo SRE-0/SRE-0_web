@@ -5,6 +5,7 @@ import { CODING_PROJECTS, type CodingProject } from "../data/coding.registry";
 
 export interface ResolvedCodingProject extends CodingProject {
   title:       string;
+  title1:       string;
   description: string;
   body:        string;
 }
@@ -20,6 +21,7 @@ export function useCodingProjects(): ResolvedCodingProject[] {
   return CODING_PROJECTS.map((project) => ({
     ...project,
     title:       t(project.i18nKeys.title),
+    title1:      t(project.i18nKeys.title1),
     description: t(project.i18nKeys.description),
     body:        t(project.i18nKeys.body),
   }));

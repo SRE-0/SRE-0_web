@@ -15,6 +15,7 @@ export interface CompetencyProject {
   schema:      ProjectSection[];   // ordered content blocks
   i18nKeys: {
     title:       string;
+    title1:       string;
     description: string;
     body:        string;
   };
@@ -30,6 +31,7 @@ export const COMPETENCY_PROJECTS: CompetencyProject[] = [
     schema: TEAMPYROS_SCHEMA,
     i18nKeys: {
       title:       "competencies_projects.project1.title",
+      title1:       "competencies_projects.project1.title1",
       description: "competencies_projects.project1.description",
       body:        "competencies_projects.project1.description"
     },

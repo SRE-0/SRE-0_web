@@ -1,60 +1,173 @@
+/* ==========================================================================
+   ProjectCard component styles.
+   Displays a project preview with image, title, description, and tags.
+   The card is a full <Link> so the entire surface is clickable.
+   ========================================================================== */
+
+/*
+ * Card root element — this is the <Link> (an <a> tag).
+ * Column flex layout stacks image above text content.
+ * overflow: hidden clips the image zoom effect within the border radius.
+ * The lift-on-hover effect uses transform + box-shadow transition.
+ */
 .card {
-    background-color: var(--md-sys-color-surface-variant);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    max-height: var(--max-width-sm);
-    color: var(--md-sys-color-on-surface);
-    text-decoration: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+
+  background-color: var(--md-sys-color-surface-container);
+  
+  color: var(--md-sys-color-on-surface);
+  text-decoration: none;
+
+  /* Lift + shadow on hover */
+  box-shadow: 0 1px 3px color-mix(in srgb, var(--md-sys-color-shadow) 8%, transparent);
+  transition:
+    transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
 }
 
-.text_container {
-    padding: var(--spacing-md);
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-xs);
+
+/* --------------------------------------------------------------------------
+   Image area
+   -------------------------------------------------------------------------- */
+
+/*
+ * imageContainer
+ * Fixed height so all cards have a consistent image area regardless
+ * of the source image dimensions. overflow: hidden clips the zoom effect.
+ * flex-shrink: 0 prevents the image from collapsing when the card is tall.
+ */
+.imageContainer {
+  width: 100%;
+  height: 200px;
+  border-bottom-left-radius: var(--radius-lg);
+  border-bottom-right-radius: var(--radius-lg);
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
-.text_title1 {
-    margin: 0px;
+/*
+ * image
+ * Covers the full container while preserving aspect ratio.
+ * The zoom effect is triggered by .card:hover to avoid the image
+ * zooming independently when the user hovers only the image area.
+ */
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
 
+.card:hover .image {
+  transform: scale(1.06);
+}
+
+/* --------------------------------------------------------------------------
+   Text content area
+   -------------------------------------------------------------------------- */
+
+/*
+ * textContainer
+ * flex: 1 makes this area grow to fill remaining card height, so that
+ * cards in a grid row all have their tag pills aligned at the bottom.
+ */
+.textContainer {
+  padding: var(--spacing-md);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+/*
+ * titleRow
+ * A single <p> that wraps both title spans on the same line.
+ * Using display: flex + align-items: baseline keeps both segments
+ * vertically aligned to their text baseline even if font sizes differ.
+ * flex-wrap: wrap lets the subtitle drop to a new line on very narrow cards.
+ */
+.titleRow {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.35em;
+}
+
+/*
+ * titleMain
+ * Primary segment of the title — semibold weight and primary color
+ * to create visual hierarchy against the subtitle.
+ */
+.titleMain {
   font-size: var(--text-lg);
   font-weight: var(--font-midsemibold);
+  color: var(--md-sys-color-primary);
+  line-height: 1.2;
 }
 
-.text_title {
-    margin: 0;
+/*
+ * titleSub
+ * Optional secondary segment — lighter weight and muted color
+ * to visually recede behind the main title.
+ */
+.titleSub {
+  font-size: var(--text-md, var(--text-lg));
+  font-weight: var(--font-regular);
+  line-height: 1.2;
 }
 
-.text_description {
-    margin: 0;
-    font-size: var(--text-sm);
-    line-height: var(--leading-normal);
+/*
+ * description
+ * Short project summary below the title.
+ * line-height: leading-normal improves readability for multi-line text.
+ */
+.description {
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  color: var(--md-sys-color-on-surface-variant);
 }
 
-/* 
-  image_container height is fixed so all cards
-  have a consistent image area regardless of image dimensions.
-*/
-.image_container {
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
-    flex-shrink: 0;
-    border-radius: var(--radius-lg);
+/* --------------------------------------------------------------------------
+   Tag pills
+   -------------------------------------------------------------------------- */
+
+/*
+ * tagList
+ * Horizontal wrapping row of technology tags.
+ * margin-top: auto pushes the tags to the bottom of the card
+ * when the card is taller than its natural content height.
+ */
+.tagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  margin-top: auto;
+  padding-top: var(--spacing-xs);
 }
 
-.image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
+/*
+ * tag
+ * Individual pill badge for a technology label.
+ * Uses primary-container colors to match the app color scheme.
+ */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-full, 9999px);
 
-    transition: transform 0.25s linear;
-}
+  font-size: var(--text-xs, 0.7rem);
+  font-weight: var(--font-semibold);
 
-.image:hover{
-    transform: scale(1.05);
+  background-color: color-mix(in srgb, var(--md-sys-color-primary-container) 70%, transparent);
+  color: var(--md-sys-color-on-primary-container);
+  border: 1px solid color-mix(in srgb, var(--md-sys-color-primary) 10%, transparent);
 }

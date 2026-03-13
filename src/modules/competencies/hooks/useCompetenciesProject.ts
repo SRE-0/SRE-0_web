@@ -5,6 +5,7 @@ import { COMPETENCY_PROJECTS, type CompetencyProject } from "../data/competencie
 
 export interface ResolvedCompetencyProject extends CompetencyProject {
   title:       string;
+  title1:       string;
   description: string;
   body:        string;
 }
@@ -20,6 +21,7 @@ export function useCompetencyProjects(): ResolvedCompetencyProject[] {
   return COMPETENCY_PROJECTS.map((project) => ({
     ...project,
     title:       t(project.i18nKeys.title),
+    title1:      t(project.i18nKeys.title1),
     description: t(project.i18nKeys.description),
     body:        t(project.i18nKeys.body),
   }));

@@ -1,75 +1,115 @@
-/* 
- * Footer layout wrapper.
- * Centers all content and applies surface-variant background.
+/* ==========================================================================
+   Footer component styles.
+   Renders a centered contact section with a decorative top accent bar,
+   contact block, divider, and copyright notice.
+   ========================================================================== */
+
+/*
+ * footer
+ * Root element. Column flex layout stacks the accent bar above the inner
+ * content. No horizontal padding here — padding lives inside .inner so
+ * the accent bar can stretch edge to edge.
+ * border-radius on top corners gives the footer a card-like appearance
+ * when it sits at the bottom of the page.
  */
 .footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 28px 16px 10px 16px;
-    border-radius: 20px 20px 0 0;
-    background-color: var(--md-sys-color-surface-variant);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: 24px 24px 0 0;
+  overflow: hidden;
+
+  background-color: var(--md-sys-color-surface-container-high);
 }
 
-/* 
- * Section heading above contact info.
+
+/*
+ * inner
+ * Content wrapper. Centers children, caps max-width so the footer
+ * doesn't feel too wide on large screens, and adds uniform padding.
+ */
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 480px;
+  align-self: center;
+  padding: var(--spacing-xl, 32px) var(--spacing-md) var(--spacing-md);
+  gap: var(--spacing-sm);
+}
+
+/*
+ * title
+ * Section heading above the contact block.
+ * Slightly larger than body text but not as heavy as a page heading.
  */
 .title {
-    font-weight: var(--font-regular);
-    font-size: var(--text-2xl);
-    margin-top: var(--spacing-md);
-    margin-bottom: var(--spacing-md);
+  margin: 0 0 var(--spacing-xs);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-regular);
+  color: var(--md-sys-color-on-surface);
+  letter-spacing: -0.01em;
 }
 
-/* 
- * Wrapper for name, bio and email.
- * Uses flex column so each child gets uniform gap spacing
- * instead of relying on inconsistent <br /> line breaks.
+/*
+ * contactBlock
+ * Stacks name, bio, and email link vertically with consistent gap.
+ * gap replaces the old margin-based spacing for uniformity.
  */
 .contactBlock {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-sm);
 }
 
-/* 
- * Full name label — slightly bolder than body text.
+/*
+ * name
+ * Full name — semibold to stand out above the bio line.
  */
 .name {
-    font-weight: var(--font-midsemibold);
-    margin: 0;
+  margin: 0;
+  font-size: var(--text-md, 1rem);
+  font-weight: var(--font-midsemibold);
+  color: var(--md-sys-color-on-surface);
 }
 
-/* 
- * Bio / short description line.
+/*
+ * bio
+ * Short description line below the name.
+ * Muted color to recede visually behind the name and email.
  */
 .bio {
-    margin: 0;
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--md-sys-color-on-surface-variant);
+  line-height: var(--leading-normal);
 }
 
-/* 
- * Decorative divider between contact block and copyright.
+/*
+ * divider
+ * Short centered rule between the contact block and copyright.
+ * Gradient fade on both ends avoids hard edges.
  */
 .divider {
-    border: none;
-    height: 1px;
-    width: 60px;
-    background: var(--md-sys-color-outline);
-    margin: 0;
+  border: none;
+  height: 1px;
+  width: 80px;
+  margin: var(--spacing-xs) 0;
+  background: var(--md-sys-color-outline-variant);
 }
 
-/* 
- * Copyright row at the very bottom of the footer.
+/*
+ * copyright
+ * Small muted text at the very bottom of the footer.
+ * margin-bottom gives breathing room above the viewport edge.
  */
 .copyright {
-    font-size: 0.85rem;
-    color: var(--md-sys-color-on-surface-variant);
-    margin-top: 8px;
-    margin-bottom: 16px;
-}
-
-.layout {
-    padding: 4px;
+  margin: 0 0 var(--spacing-sm);
+  font-size: var(--text-xs, 0.78rem);
+  color: var(--md-sys-color-on-surface-variant);
+  opacity: 0.75;
 }

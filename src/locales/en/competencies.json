@@ -2,6 +2,7 @@
   "competencies_projects": {
     "project1": {
       "title": "TeamPyros",
+      "title1": "TeamPyros",
       "description": "TeamPyros is a small robotics team focused on developing technological solutions to address real-world problems.",
       "body": {
         "about": {

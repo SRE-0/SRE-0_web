@@ -1,7 +1,8 @@
 {
   "competencies_projects": {
     "project1": {
-      "title": "TeamPyros",
+      "title": "TeamPyros: ",
+      "title1": "Un equipo de robotica creativo",
       "description": "TeamPyros es un equipo de jóvenes entusiastas de la electrónica, la robótica y la programación que desarrolla soluciones tecnológicas para enfrentar problemas reales.",
       "body": {
         "about": {
