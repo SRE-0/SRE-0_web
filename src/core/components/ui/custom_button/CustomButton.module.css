@@ -11,11 +11,12 @@
     font-weight: 550;
     cursor: pointer;
     text-decoration: none;
-    transition: border-radius 0.08s linear, opacity 0.08s linear;
+    transition: border-radius 0.08s linear, opacity 0.08s linear, background-color 0.2s ease, transform 0.15s ease;
 }
 
 .customButton:hover {
     border-radius: var(--radius-md);
+    background-color: color-mix(in srgb, var(--md-sys-color-primary) 90%, transparent);
 }
 
 /* Visually dim the button when disabled and block interaction */
