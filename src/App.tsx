@@ -1,6 +1,4 @@
 // App.tsx
-
-import { useRef } from "react";
 import { HashRouter } from "react-router-dom";
 import { ThemeProvider } from "./core/theme/ThemeContext";
 import Header     from "./core/components/layout/Header/Header";
