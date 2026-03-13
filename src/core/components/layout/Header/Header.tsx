@@ -2,6 +2,8 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { ROUTES } from "../../../router/routes.constants";
 import styles from "./Header.module.css";
+import profile from "../../../../assets/images/profile/profile.jpg"
+
 //import ThemeToggle from "../../ui/theme_toggle/ThemeToggle";
 
 /**
@@ -68,6 +70,8 @@ function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.brand}>
+
+        <img src={profile} alt="" className={styles.profile}/>
         <NavLink to={ROUTES.HOME} className={styles.logoLink}>
           <span className={styles.logo}>
             <span className={styles.logoHighlight}>Sergio</span> Pérez
