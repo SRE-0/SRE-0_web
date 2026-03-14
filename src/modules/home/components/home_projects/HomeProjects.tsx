@@ -2,26 +2,28 @@ import styles from "./HomeProjects.module.css"
 import { useTranslation } from "../../../../core/i18n/useTranslation"
 import { TranslatedText } from "../../../../core/i18n/TranslatedText"
 import type { EmbeddedLink } from "../../../../core/i18n/TranslatedText"
-
-//use projects list
 import { useCodingProjects }      from "../../../coding/hooks/useCodingProjects";
 import { useCompetencyProjects }  from "../../../competencies/hooks/useCompetenciesProject";
-import ProjectCard from "../../../shared/projects/ProjectCard"
+import ProjectCard   from "../../../shared/projects/ProjectCard"
+import ScrollReveal  from "../../../../core/components/ui/scroll_reveal/ScrollReveal"
 
 /*
-  HomeProjects renders the projects section of the home page.
-  Displays a grid of HomeCard components, one per project.
-*/
+ * HomeProjects
+ * Renders the projects section of the home page.
+ * Each element animates in independently as it enters the viewport:
+ * - Title and description stagger with delays 0 and 1.
+ * - Each ProjectCard gets its own ScrollReveal so they cascade as the
+ *   user scrolls through the grid.
+ */
 export default function HomeProjects() {
   const { t } = useTranslation("home")
 
-  const projects = useCodingProjects();
-  const competencyProjects = useCompetencyProjects();
-
+  const projects            = useCodingProjects();
+  const competencyProjects  = useCompetencyProjects();
 
   const projectsLinks: EmbeddedLink[] = [
     {
-      key: "githubLink",
+      key:  "githubLink",
       text: "GitHub",
       href: "https://github.com/SRE-0",
     },
@@ -29,18 +31,36 @@ export default function HomeProjects() {
 
   return (
     <div className={styles.projects_container}>
-      <h2>{t("projects.title")}</h2>
-      <p>
-        <TranslatedText text={t("projects.description")} links={projectsLinks} />
-      </p>
+
+      <ScrollReveal delay={0}>
+        <h2>{t("projects.title")}</h2>
+      </ScrollReveal>
+
+      <ScrollReveal delay={1}>
+        <p>
+          <TranslatedText text={t("projects.description")} links={projectsLinks} />
+        </p>
+      </ScrollReveal>
 
       <div className={styles.grid}>
-        {projects.map((project) => (
-          <ProjectCard key={project.id} {...project} />
+        {projects.map((project, index) => (
+          <ScrollReveal
+            key={project.id}
+            delay={(index % 4) as 0 | 1 | 2 | 3 | 4}
+            className={styles.cardWrapper}
+          >
+            <ProjectCard {...project} />
+          </ScrollReveal>
         ))}
-        
-        {competencyProjects.map((project) => (
-          <ProjectCard key={project.id} {...project} />
+
+        {competencyProjects.map((project, index) => (
+          <ScrollReveal
+            key={project.id}
+            delay={(index % 4) as 0 | 1 | 2 | 3 | 4}
+            className={styles.cardWrapper}
+          >
+            <ProjectCard {...project} />
+          </ScrollReveal>
         ))}
       </div>
     </div>

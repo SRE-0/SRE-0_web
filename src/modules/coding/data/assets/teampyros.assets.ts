@@ -1,8 +1,7 @@
 // modules/coding/data/assets/teampyros.assets.ts
 import type { ProjectImageItem } from "../../../shared/types/project-assets.types";
 
-import header           from "../../../../assets/images/projects/teampyros/app/teampyros_app.webp";
-
+import header           from "../../../../assets/images/projects/teampyros/app/teampyros_app_65.webp";
 import appHome          from "../../../../assets/images/projects/teampyros/app/home.webp";
 import appHomeDark      from "../../../../assets/images/projects/teampyros/app/home_dark.webp";
 import appHistory       from "../../../../assets/images/projects/teampyros/app/history.webp";

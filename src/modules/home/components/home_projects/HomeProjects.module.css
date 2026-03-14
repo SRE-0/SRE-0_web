@@ -12,3 +12,11 @@
     gap: var(--spacing-lg);
     margin-top: var(--spacing-lg);
 }
+
+/* 
+ * Makes the ScrollReveal wrapper div stretch to fill the grid cell,
+ * so the ProjectCard inside inherits the full row height.
+ */
+.cardWrapper {
+  display: contents;
+}

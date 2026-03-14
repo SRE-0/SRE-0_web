@@ -1,7 +1,7 @@
 // modules/coding/data/assets/teampyros.assets.ts
 import type { ProjectImageItem } from "../../../shared/types/project-assets.types";
 
-import header           from "../../../../assets/images/projects/teampyros/teampyros_80.webp";
+import header           from "../../../../assets/images/projects/teampyros/teampyros_65.webp";
 import team             from "../../../../assets/images/projects/teampyros/images/team.jpg";
 import team0            from "../../../../assets/images/projects/teampyros/images/team0.jpg";
 import team1            from "../../../../assets/images/projects/teampyros/images/team1.jpg";

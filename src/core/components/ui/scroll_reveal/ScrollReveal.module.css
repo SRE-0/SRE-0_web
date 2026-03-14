@@ -1,0 +1,86 @@
+/* ==========================================================================
+   ScrollReveal animation styles.
+   Provides fade-in + slide-up entrance animations triggered by
+   IntersectionObserver when an element enters the viewport.
+   Each animation variant starts invisible and transitions to visible.
+   ========================================================================== */
+
+/*
+ * Base state — element is hidden before it enters the viewport.
+ * opacity: 0 and translateY make it invisible and slightly below position.
+ * will-change hints the browser to prepare GPU compositing for these props.
+ */
+.hidden {
+  opacity: 0;
+  transform: translateY(24px);
+  will-change: opacity, transform;
+}
+
+/*
+ * Visible state — applied by the IntersectionObserver callback.
+ * Transitions from the .hidden state to fully visible and in position.
+ * The transition duration and easing are set here so they apply
+ * regardless of which delay utility class is used.
+ */
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/*
+ * Staggered delay utility classes.
+ * Applied alongside .hidden so the delay is already set before
+ * the .visible class is added — the browser respects transition-delay
+ * even when the transition starts at the same time as the class change.
+ *
+ * Usage: <ScrollReveal delay={1}> applies .delay1 (100ms delay).
+ * Delays create a cascading reveal effect for consecutive sections.
+ */
+.delay0 { transition-delay: 0ms;   }
+.delay1 { transition-delay: 80ms;  }
+.delay2 { transition-delay: 160ms; }
+.delay3 { transition-delay: 240ms; }
+.delay4 { transition-delay: 320ms; }
+
+/*
+ * Image-specific loading state.
+ * Applied to <img> elements before they finish loading.
+ * A shimmer gradient animates across the placeholder to indicate loading.
+ */
+.imagePlaceholder {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--md-sys-color-surface-container-high) 100%, transparent) 25%,
+    color-mix(in srgb, var(--md-sys-color-surface-container-highest) 100%, transparent) 50%,
+    color-mix(in srgb, var(--md-sys-color-surface-container-high) 100%, transparent) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+  border-radius: var(--radius-md);
+}
+
+/*
+ * Shimmer sweep animation.
+ * Moves the gradient background from right to left to simulate a loading sweep.
+ */
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/*
+ * Loaded image state — fades in once the browser fires the onLoad event.
+ * Works together with .hidden/.visible on the wrapper for a two-stage reveal:
+ * 1. Wrapper slides up into view (ScrollReveal).
+ * 2. Image itself fades from placeholder to full color (this class).
+ */
+.imageLoaded {
+  animation: imageFadeIn 0.4s ease forwards;
+}
+
+@keyframes imageFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
