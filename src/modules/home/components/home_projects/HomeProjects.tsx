@@ -42,27 +42,17 @@ export default function HomeProjects() {
         </p>
       </ScrollReveal>
 
-      <div className={styles.grid}>
-        {projects.map((project, index) => (
-          <ScrollReveal
-            key={project.id}
-            delay={(index % 4) as 0 | 1 | 2 | 3 | 4}
-            className={styles.cardWrapper}
-          >
-            <ProjectCard {...project} />
-          </ScrollReveal>
-        ))}
+      <ScrollReveal delay={2}>
+        <div className={styles.grid}>
+          {projects.map((project) => (
+              <ProjectCard {...project} />          
+          ))}
 
-        {competencyProjects.map((project, index) => (
-          <ScrollReveal
-            key={project.id}
-            delay={(index % 4) as 0 | 1 | 2 | 3 | 4}
-            className={styles.cardWrapper}
-          >
-            <ProjectCard {...project} />
-          </ScrollReveal>
-        ))}
-      </div>
+          {competencyProjects.map((project) => (          
+              <ProjectCard {...project} />          
+          ))}
+        </div>
+      </ScrollReveal>
     </div>
   )
 }
