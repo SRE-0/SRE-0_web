@@ -36,11 +36,11 @@ export const TEAMPYROS_APP_SCHEMA: ProjectSection[] = [
   },
   {
     type:    "subtitle",
-    i18nKey: "coding_projects.donwload",
+    i18nKey: "coding_projects.download",
   },
   {
     type:    "paragraph",
-    i18nKey: "coding_projects.donwload_description",
+    i18nKey: "coding_projects.download_description",
   },
   {
     type:    "button",

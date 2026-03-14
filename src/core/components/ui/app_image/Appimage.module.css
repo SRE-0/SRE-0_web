@@ -20,7 +20,6 @@
    * including any border-radius the consumer sets on this element.
    */
   overflow: hidden;
-  background-color: var(--md-sys-color-surface-container);
 }
 
 /* ─── Skeleton shimmer ─────────────────────────────────────────────────────── */

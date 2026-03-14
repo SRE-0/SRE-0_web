@@ -1,10 +1,15 @@
 {
   "welcome": {
-    "title": "Welcome!",
+    "title": "¡Bienvenido!",
     "paragraphs": {
-      "intro": "Hi there! I'm Sergio Perez, an Android developer and technology enthusiast from South America. I'm currently studying Computer Science while building projects that explore the intersection of software, robotics, and embedded systems.",
-      "background": "Over the past few years I've participated in several robotics competitions, earning awards in some of them. I also enjoy developing experimental projects, from intelligent fire-detection vehicles powered by ESP32 to Android applications that connect hardware, data, and users.",
-      "closing": "My goal is to create technology that feels like a natural extension of human creativity—where art, engineering, and modern digital tools work together to solve real problems. Feel free to explore my work on {{githubLink}}, try some of my {{appsLink}}, or simply take a look around the website."
+      "intro": "¡Hola! Soy Sergio Perez, desarrollador Android y entusiasta de la tecnología en Sudamérica. Actualmente estudio Ciencias de la Computación mientras desarrollo proyectos que exploran la intersección entre software, robótica y sistemas embebidos.",
+      "background": "En los últimos años he participado en diversas competencias de robótica, obteniendo premios en algunas de ellas. También disfruto crear proyectos experimentales, desde vehículos inteligentes de detección de incendios basados en ESP32 hasta aplicaciones Android que conectan hardware, datos y personas.",
+      "closing": "Mi objetivo es crear tecnología que funcione como una extensión natural de la creatividad humana, donde el arte, la ingeniería y las herramientas digitales modernas se combinan para resolver problemas reales. Puedes explorar mi trabajo en {{githubLink}}, probar algunas de mis {{appsLink}} o simplemente recorrer el sitio."
     }
+  },
+
+  "projects": {
+    "title": "Proyectos recientes",
+    "description": "Aquí puedes ver algunos de mis proyectos más recientes. También puedes revisar mi actividad en {{githubLink}} para ver en qué estoy trabajando actualmente."
   }
 }

@@ -46,12 +46,12 @@ export default function Coding() {
       <p>{t("coding_projects.project2.body.technology")}</p>
 
       {/* Screenshots */}
-      <h2>Screenshots</h2>
+      <h2>{t("coding_projects.screenshots")}</h2>
 
       <ImageContainer images={TEAMPYROS_ASSETS.screenshots} />
 
-      <h2>{t("coding_projects.donwload")}</h2>
-      <p>{t("coding_projects.donwload_description")}</p>
+      <h2>{t("coding_projects.download")}</h2>
+      <p>{t("coding_projects.download_description")}</p>
 
       <CustomButtom 
         label="GitHub" 
