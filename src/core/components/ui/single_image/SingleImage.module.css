@@ -1,30 +1,44 @@
 /*
-  Wrapper that centers the image horizontally.
-  width: 100% ensures it never exceeds its parent container.
-  overflow: hidden clips any content that might still escape.
-*/
+ * SingleImage.module.css
+ *
+ * .imageWrapper     → outer div in ImageContainer. Centers AppImage
+ *                     horizontally and adds top spacing.
+ *
+ * .appImageWrapper  → applied to AppImage's wrapper div (className prop).
+ *                     Keeps the container inline so it only takes as much
+ *                     horizontal space as the image needs.
+ *
+ * .image            → applied directly to the <img> element (imageClassName prop).
+ *                     max-width and max-height cap the size while width: auto
+ *                     and height: auto preserve the natural aspect ratio.
+ *                     object-fit: contain ensures nothing gets cropped.
+ */
+
 .imageWrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    overflow: hidden;
-    margin-top: var(--spacing-lg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;
+  margin-top: var(--spacing-lg);
 }
 
-/*
-  Image sizing.
-  max-width: 100% is the key fix — prevents the image from being
-  wider than its wrapper when the viewport is small.
-  max-height caps the height on larger screens.
-  width: auto preserves the aspect ratio.
-*/
+.appImageWrapper {
+  /*
+   * display: inline-block so the wrapper shrinks to the image size
+   * instead of stretching to 100% width, which would make the skeleton
+   * fill the entire row even for small images.
+   */
+  display: inline-block;
+  border-radius: var(--radius-lg);
+  background-color: var(--md-sys-color-surface-variant);
+}
+
 .image {
-    max-width: 100%;
-    max-height: 300px;
-    width: auto;
-    height: auto;
-    border-radius: var(--radius-lg);
-    object-fit: contain;
-    background-color: var(--md-sys-color-surface-variant);
+  max-width: 100%;
+  max-height: 300px;
+  width: auto;
+  height: auto;
+  border-radius: var(--radius-lg);
+  object-fit: contain;
 }

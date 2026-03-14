@@ -1,10 +1,12 @@
-import styles from "./ImageGrid.module.css"
+import AppImage from "../app_image/Appimage";
+import styles from "./ImageGrid.module.css";
 
 /**
  * ImageItem
- * Represents a single screenshot image with its description.
- * @param description - Alt text for the image (accessibility)
- * @param image - URL or path to the image
+ * Represents a single image with its description.
+ *
+ * @param description - Alt text for the image (accessibility and SEO).
+ * @param image       - URL or path to the image.
  */
 interface ImageItem {
   description: string;
@@ -12,28 +14,38 @@ interface ImageItem {
 }
 
 /**
- * ImageContainerProps
- * Props for the ImageContainer component.
- * @param images - Array of ImageItem objects to display in the grid
+ * ImageGridProps
+ *
+ * @param images - Array of ImageItem objects to display in the grid.
  */
-interface ImageContainerProps {
+interface ImageGridProps {
   images: ImageItem[];
 }
 
-function ImageGrid
-({ images }: ImageContainerProps){
+/**
+ * ImageGrid
+ *
+ * Responsive grid of images.
+ * AppImage replaces the plain <img> — each instance becomes a grid cell.
+ *
+ * className      → AppImage wrapper div: becomes the grid cell, inherits
+ *                  the grid's sizing and enforces the aspect ratio.
+ * imageClassName → <img> element: fills the cell with object-fit: cover.
+ */
+function ImageGrid({ images }: ImageGridProps) {
   return (
-     <div className={styles.grid}>
+    <div className={styles.grid}>
       {images.map((item) => (
-        /* Wrapper enforces the 9:16 aspect ratio box */
-        <img
-            className={styles.image}
-            src={item.image}
-            alt={item.description}
+        <AppImage
+          key={item.image}
+          src={item.image}
+          alt={item.description}
+          className={styles.imageWrapper}
+          imageClassName={styles.image}
         />
       ))}
     </div>
-  )
+  );
 }
 
 export default ImageGrid;

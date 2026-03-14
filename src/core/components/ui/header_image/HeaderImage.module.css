@@ -1,6 +1,23 @@
-.image{
-    width: 100%;
-    max-height: 280px;
-    border-radius: var(--radius-lg);
-    object-fit: cover;
+/*
+ * HeaderImage.module.css
+ *
+ * .wrapper   → applied to the AppImage outer div (className prop).
+ *              Controls the container shape: full width, capped height,
+ *              rounded corners.
+ *
+ * .image     → applied directly to the <img> element (imageClassName prop).
+ *              Fills the wrapper completely. object-fit: cover crops the
+ *              image to fill the space without distorting proportions.
+ */
+
+.wrapper {
+  width: 100%;
+  max-height: 280px;
+  border-radius: var(--radius-lg);
+}
+
+.image {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
 }

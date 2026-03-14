@@ -1,0 +1,58 @@
+/*
+ * AppImage.module.css
+ *
+ * Base styles for AppImage. These are intentionally minimal —
+ * no width, height, object-fit, or border-radius are set here
+ * because those are the consumer's responsibility via imageClassName.
+ *
+ * MD3 tokens used for the skeleton:
+ *   --md-sys-color-surface-container       : base skeleton background.
+ *   --md-sys-color-surface-container-high  : lighter shimmer sweep.
+ * Both adapt automatically to light/dark mode via your theme file.
+ */
+
+/* ─── Wrapper ──────────────────────────────────────────────────────────────── */
+
+.wrapper {
+  position: relative;
+  /*
+   * overflow: hidden clips the skeleton shimmer to the wrapper shape,
+   * including any border-radius the consumer sets on this element.
+   */
+  overflow: hidden;
+  background-color: var(--md-sys-color-surface-container);
+}
+
+/* ─── Skeleton shimmer ─────────────────────────────────────────────────────── */
+
+.skeleton {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    var(--md-sys-color-surface-container) 25%,
+    var(--md-sys-color-surface-container-high) 50%,
+    var(--md-sys-color-surface-container) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ─── Image ────────────────────────────────────────────────────────────────── */
+
+.image {
+  /*
+   * display: block removes the inline baseline gap beneath the image.
+   * No width, height, or object-fit — the consumer sets those via imageClassName.
+   */
+  display: block;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.imageHidden  { opacity: 0; }
+.imageVisible { opacity: 1; }
