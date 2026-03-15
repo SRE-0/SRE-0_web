@@ -1,7 +1,7 @@
 // core/components/ui/scroll_reveal/ScrollReveal.tsx
 
-import { Children, isValidElement, cloneElement, useRef, useEffect, useState } from "react";
-import type { ReactNode, ReactElement } from "react";
+import { Children } from "react";
+import type { ReactNode } from "react";
 import useScrollReveal from "../../../../core/hooks/useScrollReveal";
 import styles from "./ScrollReveal.module.css";
 
