@@ -1,25 +1,25 @@
-import styles from "./HomeProjects.module.css"
-import { useTranslation } from "../../../../core/i18n/useTranslation"
-import { TranslatedText } from "../../../../core/i18n/TranslatedText"
-import type { EmbeddedLink } from "../../../../core/i18n/TranslatedText"
-import { useCodingProjects }      from "../../../coding/hooks/useCodingProjects";
-import { useCompetencyProjects }  from "../../../competencies/hooks/useCompetenciesProject";
-import ProjectCard   from "../../../shared/projects/ProjectCard"
-import ScrollReveal  from "../../../../core/components/ui/scroll_reveal/ScrollReveal"
+// HomeProjects.tsx
+import { useTranslation }        from "../../../../core/i18n/useTranslation"
+import { TranslatedText }        from "../../../../core/i18n/TranslatedText"
+import type { EmbeddedLink }     from "../../../../core/i18n/TranslatedText"
+import { useCodingProjects }     from "../../../coding/hooks/useCodingProjects"
+import { useCompetencyProjects } from "../../../competencies/hooks/useCompetenciesProject"
+import ProjectGrid from "../../../shared/projects/ProjectGrid"
+import ScrollReveal              from "../../../../core/components/ui/scroll_reveal/ScrollReveal"
 
 /*
  * HomeProjects
  * Renders the projects section of the home page.
- * Each element animates in independently as it enters the viewport:
- * - Title and description stagger with delays 0 and 1.
- * - Each ProjectCard gets its own ScrollReveal so they cascade as the
- *   user scrolls through the grid.
+ * Delegates grid rendering to ProjectGrid, keeping this component
+ * focused only on layout, translations, and data fetching.
  */
 export default function HomeProjects() {
   const { t } = useTranslation("home")
 
-  const projects            = useCodingProjects();
-  const competencyProjects  = useCompetencyProjects();
+  const codingProjects     = useCodingProjects()
+  const competencyProjects = useCompetencyProjects()
+
+  const allProjects = [...codingProjects, ...competencyProjects]
 
   const projectsLinks: EmbeddedLink[] = [
     {
@@ -30,29 +30,17 @@ export default function HomeProjects() {
   ]
 
   return (
-    <div className={styles.projects_container}>
-
-      <ScrollReveal delay={0}>
+    <div>
+      <ScrollReveal mode="cascade">
         <h2>{t("projects.title")}</h2>
-      </ScrollReveal>
-
-      <ScrollReveal delay={1}>
+      
         <p>
           <TranslatedText text={t("projects.description")} links={projectsLinks} />
         </p>
+      
+        <ProjectGrid projects={allProjects} />
       </ScrollReveal>
 
-      <ScrollReveal delay={2}>
-        <div className={styles.grid}>
-          {projects.map((project) => (
-              <ProjectCard {...project} />          
-          ))}
-
-          {competencyProjects.map((project) => (          
-              <ProjectCard {...project} />          
-          ))}
-        </div>
-      </ScrollReveal>
     </div>
   )
 }

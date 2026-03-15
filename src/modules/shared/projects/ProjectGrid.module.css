@@ -1,0 +1,17 @@
+/* ==========================================================================
+   ProjectGrid component styles.
+   Renders a responsive auto-fill grid of ProjectCard components.
+   ========================================================================== */
+
+/*
+ * grid
+ * auto-fill creates as many columns as fit within the container.
+ * minmax(260px, 1fr) ensures each column is at least 260px wide,
+ * growing equally to fill available space on wider viewports.
+ */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+}

@@ -1,9 +1,10 @@
 import { buildRoute } from "../../../core/router/routes.constants";
 import { TEAMPYROS_APP_SCHEMA } from "./schemas/teampyros-app.schema";
+import { GRADEBOOK_SCHEMA } from "./schemas/gradebook.schema";
 import type { ProjectSection } from "../../shared/types/project-schema.types";
 
-import imgGradebook    from "../../../assets/images/projects/gradebook/gradebook_35.webp";
-import imgTeampyrosApp from "../../../assets/images/projects/teampyros/app/teampyros_app_35.webp";
+import imgGradebook    from "../../../assets/images/projects/gradebook/gradebook_30.webp";
+import imgTeampyrosApp from "../../../assets/images/projects/teampyros/app/teampyros-app_30.webp";
 
 export interface CodingProject {
   id:     string;
@@ -25,9 +26,9 @@ export const CODING_PROJECTS: CodingProject[] = [
     id:    "project-gradebook",
     slug:  "gradebook",           // lowercase — must match buildRoute exactly
     image: imgGradebook,
-    tags:  ["Android", "Java"],
+    tags:  ["Android", "Java", "SQLite"],
     route: buildRoute.codingDetail("gradebook"),
-    schema: TEAMPYROS_APP_SCHEMA,
+    schema: GRADEBOOK_SCHEMA,
     i18nKeys: {
       title:       "coding_projects.project1.title",
       title1:       "coding_projects.project1.title1",
@@ -39,7 +40,7 @@ export const CODING_PROJECTS: CodingProject[] = [
     id:    "project-teampyros-app",
     slug:  "teampyros-app",       // lowercase — must match buildRoute exactly
     image: imgTeampyrosApp,
-    tags:  ["Android", "Firebase"],
+    tags:  ["Android", "Firebase", "Kotlin", "Material Design 3"],
     route: buildRoute.codingDetail("teampyros-app"),
     schema: TEAMPYROS_APP_SCHEMA,
     i18nKeys: {

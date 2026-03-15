@@ -1,4 +1,6 @@
 {
+    "title": "Coding",
+    "description": "Aquí encontrarás algunos de los proyectos de software que he desarrollado a lo largo de los años utilizando tecnologías como Kotlin, Java, SQLite y diseño de interfaces Android con XML. Siéntete libre de explorar algunas de las ideas y experimentos detrás de mi trabajo.",
     "coding_projects": {
         "github_button": "GitHub",
         "screenshots": "Capturas de pantalla",
@@ -7,10 +9,12 @@
         "project1": {
             "title": "GradeBook",
             "title1": "Organiza y Calcula tus Calificaciones",
-            "description": "GradeBook es una aplicación Android diseñada para ayudar a estudiantes y profesores a gestionar cursos, tareas y calificaciones. Permite organizar materias, registrar evaluaciones y calcular automáticamente la nota final según diferentes esquemas de evaluación.",
-            
-            "body":{
-
+            "description": "GradeBook es una aplicación Android que permite guardar calificaciones, calcular promedios y notas ponderadas, y seguir el progreso académico mediante una interfaz intuitiva basada en Material Design.",            
+            "body": {
+                "management": "GradeBook permite organizar los períodos académicos en formatos flexibles, desde semestres hasta sistemas mensuales. Puedes crear tantos períodos como necesites y registrar evaluaciones o actividades dentro de cada uno, facilitando el seguimiento del rendimiento académico.",
+                "interface": "La aplicación cuenta con una interfaz moderna e intuitiva basada en Material Design 3 y Material You. Incluye temas dinámicos y esquemas de color personalizables que se adaptan al estilo visual del dispositivo.",                
+                "statistics": "La app también incorpora un módulo de estadísticas que muestra las calificaciones mediante gráficos y resúmenes visuales, permitiendo comprender rápidamente las tendencias de rendimiento y el progreso general.",
+                "technology": "Internamente, GradeBook utiliza una base de datos local SQLite mediante la librería Room, lo que permite almacenar la información de forma segura incluso sin conexión a internet. La aplicación sigue la arquitectura MVVM para mantener un código modular, escalable y fácil de mantener."
             }
         },
         "project2": {

@@ -49,12 +49,8 @@ function ProjectCard({ title, title1 = "", description, image, tags, route }: Pr
          * Both live inside a single <p> as inline <span> elements
          * to guarantee they flow on the same line.
          */}
-        <p className={styles.titleRow}>
-          <span className={styles.titleMain}>{title}</span>
-          {title1 && (
-            <span className={styles.titleSub}>{title1}</span>
-          )}
-        </p>
+        <span className={styles.titleMain}>{title}</span>
+        <span className={styles.titleSub}>{title1}</span>
 
         <p className={styles.description}>{description}</p>
 

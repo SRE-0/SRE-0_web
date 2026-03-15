@@ -1,14 +1,14 @@
 // modules/coding/data/assets/teampyros.assets.ts
 import type { ProjectImageItem } from "../../../shared/types/project-assets.types";
 
-import header           from "../../../../assets/images/projects/teampyros/teampyros_65.webp";
-import team             from "../../../../assets/images/projects/teampyros/images/team.jpg";
-import team0            from "../../../../assets/images/projects/teampyros/images/team0.jpg";
-import team1            from "../../../../assets/images/projects/teampyros/images/team1.jpg";
-import team2            from "../../../../assets/images/projects/teampyros/images/team2.jpg";
-import team3            from "../../../../assets/images/projects/teampyros/images/team3.jpg";
-import team4            from "../../../../assets/images/projects/teampyros/images/team4.jpg";
-import team5            from "../../../../assets/images/projects/teampyros/images/team5.jpg";
+import header           from "../../../../assets/images/projects/teampyros/teampyros_60.webp";
+import team             from "../../../../assets/images/projects/teampyros/images/team.webp";
+import team0            from "../../../../assets/images/projects/teampyros/images/team0.webp";
+import team1            from "../../../../assets/images/projects/teampyros/images/team1.webp";
+import team2            from "../../../../assets/images/projects/teampyros/images/team2.webp";
+import team3            from "../../../../assets/images/projects/teampyros/images/team3.webp";
+import team4            from "../../../../assets/images/projects/teampyros/images/team4.webp";
+import team5            from "../../../../assets/images/projects/teampyros/images/team5.webp";
 import car              from "../../../../assets/images/projects/teampyros/images/e.webp";
 
 // Shape of a project's complete asset bundle.

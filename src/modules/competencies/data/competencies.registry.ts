@@ -4,7 +4,7 @@ import { buildRoute }           from "../../../core/router/routes.constants";
 import { TEAMPYROS_SCHEMA }     from "./schemas/teampyros.schema";
 import type { ProjectSection }   from "../../shared/types/project-schema.types";
 
-import imgTeampyros from "../../../assets/images/projects/teampyros/teampyros_35.webp";
+import imgTeampyros from "../../../assets/images/projects/teampyros/teampyros_30.webp";
 
 export interface CompetencyProject {
   id:          string;
@@ -26,7 +26,7 @@ export const COMPETENCY_PROJECTS: CompetencyProject[] = [
     id:     "teampyros",
     slug:   "teampyros",
     image:  imgTeampyros,
-    tags:   ["Robotics", "Firebase", "Android"],
+    tags:   ["Robotics", "Firebase", "Android", "C++", "Kotlin", "IOT"],
     route:  buildRoute.competencyDetail("teampyros"),
     schema: TEAMPYROS_SCHEMA,
     i18nKeys: {

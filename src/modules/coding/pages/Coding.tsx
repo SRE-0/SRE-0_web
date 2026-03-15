@@ -1,15 +1,5 @@
 // Coding.tsx
-
-import ImageContainer from '../../../core/components/ui/screenshots_grid/ScreenshotsGrid'
-import HeaderImage from '../../../core/components/ui/header_image/HeaderImage'
-
-import { TEAMPYROS_ASSETS } from '../data/assets/teampyros.assets'
-
-import { useTranslation } from "../../../core/i18n/useTranslation"
-
-import CustomButtom from '../../../core/components/ui/custom_button/CustomButton'
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
-
+import CodingView from "../components/coding_view/CodingView"
 /*
   Coding Page
 
@@ -27,38 +17,10 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 */
 
 export default function Coding() {
-  const { t } = useTranslation("coding")
 
   return (
     <div>
-
-      {/* Page Title */}
-      <h1>{t("coding_projects.project2.title")}</h1>
-
-      {/* Header image */}
-      <HeaderImage
-        image={TEAMPYROS_ASSETS.header}
-        description=""
-      />
-
-      <p>{t("coding_projects.project2.body.monitoring")}</p>
-      <p>{t("coding_projects.project2.body.emergency")}</p>
-      <p>{t("coding_projects.project2.body.technology")}</p>
-
-      {/* Screenshots */}
-      <h2>{t("coding_projects.screenshots")}</h2>
-
-      <ImageContainer images={TEAMPYROS_ASSETS.screenshots} />
-
-      <h2>{t("coding_projects.download")}</h2>
-      <p>{t("coding_projects.download_description")}</p>
-
-      <CustomButtom 
-        label="GitHub" 
-        icon={faGithub}
-        href='https://github.com/SRE-0'
-        />
-
+      <CodingView/>
     </div>
   )
 }

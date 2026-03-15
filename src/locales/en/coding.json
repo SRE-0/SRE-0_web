@@ -1,4 +1,6 @@
 {
+    "title": "Coding",
+    "description": "Here are some of the software projects I have developed over the years using technologies such as Kotlin, Java, SQLite, and Android UI design with XML. Feel free to explore some of the ideas and experiments behind my work.",
     "coding_projects": {
         "github_button": "GitHub",
         "screenshots": "Screenshots",
@@ -7,12 +9,14 @@
         "project1": {
             "title": "GradeBook",
             "title1": "Organize and Calculate Your Grades",
-            "description": "GradeBook is an Android application designed to help students and teachers manage courses, assignments, and grades. The app allows users to organize subjects, record evaluations, and automatically calculate final grades based on different grading schemes.",
-            
-            "body":{
-
+            "description": "GradeBook is an Android app that helps students store grades, calculate averages and weighted scores, and track their academic progress through an intuitive Material Design interface.", 
+            "body": {
+                "management": "GradeBook allows users to organize their academic periods in flexible formats, from semesters to monthly systems. You can create as many periods as needed and register assignments or evaluations inside each one, making it easy to keep track of your performance.",                
+                "interface": "The application features a modern and intuitive interface based on Material Design 3 and Material You. It supports dynamic themes and customizable color schemes that adapt to the device’s visual style.",
+                "statistics": "The app also includes a statistics module that visualizes stored grades through charts and summaries, helping users quickly understand performance trends and overall academic progress.",
+                "technology": "Internally, GradeBook uses a local SQLite database through the Room persistence library, allowing reliable offline storage and fast access to records. The application follows the MVVM architecture to keep the code modular, maintainable, and scalable."
             }
-        },
+        },    
         "project2": {
             "title": "TeamPyros Mobile App",
             "title1": "Smart Fire Prevention Monitoring",

@@ -22,12 +22,9 @@
   color: var(--md-sys-color-on-surface);
   text-decoration: none;
 
-  /* Lift + shadow on hover */
-  box-shadow: 0 1px 3px color-mix(in srgb, var(--md-sys-color-shadow) 8%, transparent);
   transition:
-    transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
-    box-shadow 0.25s ease,
-    border-color 0.25s ease;
+    border-color 0.25s ease,
+    background-color 0.2s ease;
 }
 
 
@@ -68,6 +65,10 @@
   transform: scale(1.06);
 }
 
+.card:hover{
+  background-color: color-mix(in srgb, var(--md-sys-color-surface-container-highest) 80%, transparent);
+}
+
 /* --------------------------------------------------------------------------
    Text content area
    -------------------------------------------------------------------------- */
@@ -83,21 +84,6 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-xs);
-}
-
-/*
- * titleRow
- * A single <p> that wraps both title spans on the same line.
- * Using display: flex + align-items: baseline keeps both segments
- * vertically aligned to their text baseline even if font sizes differ.
- * flex-wrap: wrap lets the subtitle drop to a new line on very narrow cards.
- */
-.titleRow {
-  margin: 0;
-  display: flex;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 0.35em;
 }
 
 /*
@@ -120,7 +106,8 @@
 .titleSub {
   font-size: var(--text-md, var(--text-lg));
   font-weight: var(--font-regular);
-  line-height: 1.2;
+  line-height: 1.5;
+  margin-bottom: var(--spacing-sm);
 }
 
 /*

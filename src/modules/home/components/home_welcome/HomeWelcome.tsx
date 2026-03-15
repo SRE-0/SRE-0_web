@@ -28,22 +28,15 @@ export default function HomeWelcome() {
   ]
 
   return (
-    <div className="welcome-container">
-      
-      <ScrollReveal delay={0}>
+    <div>      
+      <ScrollReveal mode="cascade">
         <h1>{t("welcome.title")}</h1>
-      </ScrollReveal>
       
-      <ScrollReveal delay={1}>
         {/* Plain paragraph — no embedded links */}
         <p>{t("welcome.paragraphs.intro")}</p>
-      </ScrollReveal>
-
-      <ScrollReveal delay={2}>
-        <p>{t("welcome.paragraphs.background")}</p>
-      </ScrollReveal>
       
-      <ScrollReveal delay={3}>
+        <p>{t("welcome.paragraphs.background")}</p>
+      
         {/* Paragraph with embedded CustomTextLink components */}
         <TranslatedText
           text={t("welcome.paragraphs.closing")}

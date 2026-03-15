@@ -74,6 +74,11 @@
   transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* STYLING SCROLLBAR */
+::-webkit-scrollbar {
+  width: 0px; /* THIS WILL RESET THE DEFAULT SCORLLBAR STYLING */
+}
+
 *::selection{
   background-color: var(--md-sys-color-secondary);
   color: var(--md-sys-color-on-secondary);
