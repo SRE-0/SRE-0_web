@@ -48,15 +48,22 @@ i18n
     // Available languages
     supportedLngs: ["en", "es"],
 
+    // Load only the base language ("es" instead of "es-MX", "es-US", etc.)
+    load: "languageOnly",
+
+    // Allow any regional variant to match its base language
+    // "es-MX" -> "es", "en-US" -> "en"
+    nonExplicitSupportedLngs: true,
+
     // Prevents XSS — React already escapes, so this is safe to disable
     interpolation: {
       escapeValue: false,
     },
 
-    // Language detection order: localStorage → browser
+    // Language detection order: browser only
     detection: {
-      order: ["localStorage", "navigator"],
-      caches: ["localStorage"],
+      order: ["navigator"],
+      caches: [],
     },
   })
 
