@@ -2,7 +2,7 @@
 import HeaderImage from '../../../../core/components/ui/header_image/HeaderImage'
 import ScrollReveal from '../../../../core/components/ui/scroll_reveal/ScrollReveal'
 import { useTranslation } from '../../../../core/i18n/useTranslation'
-import header from "../../../../assets/images/projects/coding.webp";
+import header from "../../../../assets/images/projects/coding_60.webp";
 
 
 export default function CodingHeader() {

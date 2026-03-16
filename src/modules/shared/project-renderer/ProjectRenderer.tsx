@@ -127,6 +127,7 @@ function ProjectRenderer({ sections, namespace }: ProjectRendererProps) {
               <ScrollReveal key={index} delay={delay}>
                 <CustomButton
                   label={t(section.i18nKey)}
+                  icon={section.icon}
                   href={section.href}
                 />
               </ScrollReveal>

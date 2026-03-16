@@ -1,0 +1,64 @@
+{
+  "about": {
+    "title": "Sobre mí",
+
+    "introduction": {
+      "title": "El inicio de una curiosidad",
+      "text": "Desde una edad temprana desarrollé un fuerte interés por la tecnología. Comencé experimentando con circuitos electrónicos simples, construyendo pequeñas lámparas LED, sistemas táctiles usando transistores e incluso un sistema básico de riego automatizado. Estos primeros experimentos despertaron una curiosidad constante por entender cómo funcionan los sistemas tecnológicos y cómo podían mejorarse o expandirse."
+    },
+
+    "software": {
+      "title": "Desarrollo de software",
+      "text": "Con el tiempo, esa curiosidad me llevó naturalmente al mundo del desarrollo de software. Comencé realizando pequeños experimentos con C++, explorando lógica de programación y estructuras básicas. Posteriormente me enfoqué en el desarrollo de aplicaciones Android utilizando Java y Kotlin, donde aprendí a trabajar con tecnologías fundamentales como SQLite, Room, arquitectura MVVM y ViewModels. También he desarrollado interfaces modernas usando XML con Material Design 3 y Material You, además de integrar servicios en la nube como Firebase para sincronización y almacenamiento de datos."
+    },
+
+    "current": {
+      "title": "Actualmente",
+      "text": "Actualmente estudio Ciencias de la Computación mientras continúo explorando nuevas tecnologías y herramientas de desarrollo. En los últimos años he ampliado mi experiencia hacia el desarrollo web y multiplataforma utilizando tecnologías como React, React Native, Expo, TypeScript, JavaScript, HTML y CSS, muchas de las cuales forman parte del desarrollo de esta misma página."
+    },
+
+    "technologies": {
+      "title": "Tecnologías con las que trabajo",
+      "android": "Kotlin, Java, Android SDK, MVVM, ViewModels, SQLite, Room, Firebase, Material Design 3",
+      "embedded": "ESP32, sensores, prototipado electrónico y sistemas embebidos",
+      "web": "React, React Native, Expo, TypeScript, JavaScript, HTML y CSS"
+    },
+
+    "media": {
+      "title": "Aparición en medios",
+      "description": "Algunos de mis proyectos tecnológicos han sido presentados públicamente. En esta entrevista para televisión hablo sobre el desarrollo de proyectos de robótica y sistemas experimentales que combinan hardware y software.",
+      "video_title": "Entrevista sobre proyectos de robótica y tecnología"
+    },
+
+    "timeline": {
+      "title": "Trayectoria",
+      "items": [
+        {
+          "year": "Inicio",
+          "text": "Primeros experimentos con electrónica, construyendo circuitos simples y sistemas basados en transistores."
+        },
+        {
+          "year": "Programación",
+          "text": "Inicio en programación con C++ y exploración de lógica y algoritmos."
+        },
+        {
+          "year": "Android",
+          "text": "Desarrollo de aplicaciones Android utilizando Java y Kotlin, aprendiendo arquitectura MVVM y bases de datos locales."
+        },
+        {
+          "year": "Robótica",
+          "text": "Participación en proyectos y competencias de robótica, desarrollando sistemas que integran sensores, software y control autónomo."
+        },
+        {
+          "year": "Actualidad",
+          "text": "Exploración de desarrollo web y multiplataforma con React, React Native y TypeScript mientras continúo desarrollando proyectos tecnológicos."
+        }
+      ]
+    },
+
+    "contact": {
+      "title": "Contacto",
+      "description": "Si te interesa mi trabajo o deseas colaborar en algún proyecto, no dudes en contactarme. Siempre estoy abierto a conversar sobre tecnología, desarrollo y nuevas ideas."
+    }
+  }
+}

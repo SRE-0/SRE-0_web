@@ -1,5 +1,6 @@
 // modules/shared/types/project-schema.types.ts
 
+import type { IconDefinition }   from "@fortawesome/fontawesome-svg-core";
 import type { ProjectImageItem } from "./project-assets.types";
 
 /*
@@ -97,12 +98,12 @@ export interface ScreenshotsGridSection {
  * ButtonSection
  * A call-to-action button with an external link.
  * - i18nKey: key for the button label
- * - href: destination URL
- * - icon: FontAwesome icon definition (optional)
+ * - href:    destination URL
+ * - icon:    optional FontAwesome icon definition (IconDefinition from @fortawesome/fontawesome-svg-core)
  */
 export interface ButtonSection {
   type:    "button";
   i18nKey: string;
   href:    string;
-  icon?:   object;
+  icon?:   IconDefinition;
 }

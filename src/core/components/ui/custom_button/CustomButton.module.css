@@ -1,36 +1,160 @@
-/* Main button container - uses CSS custom properties for theming */
+/* ==========================================================================
+   CustomButton styles — Material Design 3
+   
+   Supports three variants: filled, outlined, tonal.
+   
+   How the state layer works:
+   - The ::after pseudo-element sits on top of the button at full size.
+   - Its background is currentColor (inherits text color automatically).
+   - opacity transitions from 0 to the MD3 state layer values:
+       hover   -> 8%
+       focus   -> 12%
+       pressed -> 12%
+   - This avoids mutating background-color directly and works correctly
+     across all three variants with no extra code.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Base — shared across all variants
+   -------------------------------------------------------------------------- */
 .customButton {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background-color: var(--md-sys-color-primary);
-    color: var(--md-sys-color-on-primary);
-    border: none;
-    border-radius: var(--radius-xl);
-    padding: 12px 18px;
-    font-weight: 550;
-    cursor: pointer;
-    text-decoration: none;
-    transition: border-radius 0.08s linear, opacity 0.08s linear, background-color 0.2s ease, transform 0.15s ease;
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+
+  /* MD3 full-pill shape token */
+  border-radius: 9999px;
+
+  /* MD3 label-large typography */
+  font-size: 0.875rem;
+  font-weight: 550;
+  letter-spacing: 0.00625rem;
+  line-height: 1.25rem;
+  white-space: nowrap;
+  text-decoration: none;
+
+  /* Stacking context for the state layer */
+  position: relative;
+  overflow: hidden;
+
+  cursor: pointer;
+
+  /* Smooth transitions for elevation and scale */
+  transition:
+    box-shadow 200ms ease,
+    transform 100ms ease,
+    background-color 150ms ease;
 }
 
-.customButton:hover {
-    border-radius: var(--radius-md);
-    background-color: color-mix(in srgb, var(--md-sys-color-primary) 90%, transparent);
+/* 
+  State layer pseudo-element.
+  Sits on top of everything, pointer-events off so it never blocks clicks.
+  Uses currentColor so it adapts to each variant's text color automatically.
+*/
+.customButton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: currentColor;
+  opacity: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  transition: opacity 200ms ease;
 }
 
-/* Visually dim the button when disabled and block interaction */
-.customButton:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
+/* Hover state layer */
+.customButton:hover::after {
+    opacity: 0.08;
 }
 
-/* Icon spacing - left side */
-.iconLeft {
-    font-size: 0.9em;
+/* Focus-visible state layer + accessible outline */
+.customButton:focus-visible {
+  outline: 3px solid var(--md-sys-color-outline);
+  outline-offset: 3px;
 }
 
-/* Icon spacing - right side */
-.iconRight {
-    font-size: 0.9em;
+.customButton:focus-visible::after {
+  opacity: 0.12;
+}
+
+/* Active / press — scale down + state layer */
+.customButton:active {
+  transform: scale(0.97);
+}
+
+.customButton:active::after {
+  opacity: 0.12;
+}
+
+/* Disabled state — dim and block all interaction */
+.customButton:disabled,
+.customButton[aria-disabled="true"] {
+  opacity: 0.38;
+  cursor: not-allowed;
+  box-shadow: none;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   Variant: filled (default)
+   Primary background, on-primary text, elevation level 0 at rest.
+   -------------------------------------------------------------------------- */
+.filled {
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  border: none;
+
+  /* MD3 elevation level 0 */
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    0 1px 3px 1px rgba(0, 0, 0, 0.15);
+}
+
+/* Hover: elevation rises to level 1 */
+.filled:hover {
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    0 2px 6px 2px rgba(0, 0, 0, 0.15);
+}
+
+/* --------------------------------------------------------------------------
+   Variant: outlined
+   Transparent background, primary-colored border and text.
+   No elevation — border acts as the visual boundary.
+   -------------------------------------------------------------------------- */
+.outlined {
+  background-color: transparent;
+  color: var(--md-sys-color-primary);
+  border: 1px solid var(--md-sys-color-outline);
+  box-shadow: none;
+}
+
+/* Hover: border shifts to primary for emphasis */
+.outlined:hover {
+  border-color: var(--md-sys-color-primary);
+}
+
+/* --------------------------------------------------------------------------
+   Variant: tonal
+   Secondary container background, on-secondary-container text.
+   Softer than filled — good for secondary actions.
+   -------------------------------------------------------------------------- */
+.tonal {
+  background-color: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+  border: none;
+
+  /* MD3 elevation level 0 */
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    0 1px 3px 1px rgba(0, 0, 0, 0.15);
+}
+
+/* Hover: slight elevation increase */
+.tonal:hover {
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    0 2px 6px 2px rgba(0, 0, 0, 0.15);
 }

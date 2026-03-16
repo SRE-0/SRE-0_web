@@ -7,12 +7,14 @@ import homeEN from "../../locales/en/home.json"
 import commonEN from "../../locales/en/common.json"
 import codingEN       from "../../locales/en/coding.json"
 import competenciesEN from "../../locales/en/competencies.json"
+import aboutEN from "../../locales/en/about.json"
 
 // Spanish translations
 import homeES from "../../locales/es/home.json"
 import commonES from "../../locales/es/common.json"
 import competenciesES from "../../locales/es/competencies.json"
 import codingES       from "../../locales/es/coding.json"
+import aboutES from "../../locales/es/about.json"
 
 /*
   Central i18next configuration.
@@ -32,13 +34,15 @@ i18n
         home:         homeEN,
         common:       commonEN,
         coding:       codingEN,
-        competencies: competenciesEN,  
+        competencies: competenciesEN,
+        about:        aboutEN,  
       },
       es: {
         home: homeES,
         common: commonES,
-        coding: codingES,       // agrega esto
+        coding: codingES,       
         competencies: competenciesES,
+        about: aboutES,
       },
     },
 

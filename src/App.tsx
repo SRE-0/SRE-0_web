@@ -4,7 +4,7 @@ import { ThemeProvider } from "./core/theme/ThemeContext";
 import Header     from "./core/components/layout/Header/Header";
 import AppRouter  from "./core/router/AppRouter";
 import Footer     from "./core/components/layout/Footer/Footer";
-import ScrollToTop from "./core/components/ui/scroll/ScrollToTop";
+import ScrollToTop from "./core/components/ui/scroll_to_top/ScrollToTop";
 import "./App.css";
 
 /*

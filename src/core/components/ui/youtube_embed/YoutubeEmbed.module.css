@@ -1,0 +1,39 @@
+/* ==========================================================================
+   YoutubeEmbed styles — Material Design 3
+   Responsive 16:9 video container with MD3 surface, elevation and shape.
+   ========================================================================== */
+
+/* Outer wrapper — constrains max width and centers the player */
+.wrapper {
+  width: 100%;
+  max-width: 860px;
+  margin: 1.5rem auto;
+}
+
+/* 
+  Aspect-ratio container using the classic padding-bottom trick.
+  padding-bottom: 56.25% = (9 / 16) * 100  -> forces 16:9 at any width.
+  position: relative lets the absolutely-positioned iframe fill it.
+*/
+.container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  border-radius: 16px;           /* MD3 large shape token */
+  overflow: hidden;
+
+  /* MD3 surface container + elevation shadow */
+  background: var(--md-sys-color-surface-container);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.30),
+    0 2px 6px 2px rgba(0, 0, 0, 0.15);
+}
+
+/* iframe fills the container completely */
+.iframe {
+  position: absolute;
+  inset: 0;           /* shorthand for top/right/bottom/left: 0 */
+  width: 100%;
+  height: 100%;
+  border: none;
+}

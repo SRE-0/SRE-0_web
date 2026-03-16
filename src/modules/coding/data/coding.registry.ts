@@ -26,7 +26,7 @@ export const CODING_PROJECTS: CodingProject[] = [
     id:    "project-gradebook",
     slug:  "gradebook",           // lowercase — must match buildRoute exactly
     image: imgGradebook,
-    tags:  ["Android", "Java", "SQLite"],
+    tags:  ["Android", "Java", "SQLite", "Android Studio"],
     route: buildRoute.codingDetail("gradebook"),
     schema: GRADEBOOK_SCHEMA,
     i18nKeys: {
@@ -40,7 +40,7 @@ export const CODING_PROJECTS: CodingProject[] = [
     id:    "project-teampyros-app",
     slug:  "teampyros-app",       // lowercase — must match buildRoute exactly
     image: imgTeampyrosApp,
-    tags:  ["Android", "Firebase", "Kotlin", "Material Design 3"],
+    tags:  ["Android", "Firebase", "Kotlin", "Material Design 3", "Android Studio"],
     route: buildRoute.codingDetail("teampyros-app"),
     schema: TEAMPYROS_APP_SCHEMA,
     i18nKeys: {

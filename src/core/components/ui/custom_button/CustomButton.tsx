@@ -3,24 +3,34 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./CustomButton.module.css";
 
 /**
- * CustomButton - A flexible button component that supports optional FontAwesome6 icons.
- * When href is provided, renders as an anchor tag to open an external URL.
+ * CustomButton component.
+ * A flexible Material Design 3 button that supports icons, variants,
+ * and renders as either a <button> or an <a> tag depending on props.
  *
- * Props:
- * @param {string} label - The text displayed inside the button.
- * @param {IconDefinition} [icon] - Optional FontAwesome6 icon to render before the label.
- * @param {"left" | "right"} [iconPosition="left"] - Position of the icon relative to the label.
- * @param {string} [href] - Optional external URL. When provided, renders as <a> instead of <button>.
- * @param {() => void} [onClick] - Optional click handler.
- * @param {"button" | "submit" | "reset"} [type="button"] - HTML button type attribute.
- * @param {boolean} [disabled=false] - Disables the button when true.
- * @param {string} [className] - Optional extra CSS class for external overrides.
+ * How it works:
+ * - When `href` is provided, renders as <a> with target="_blank".
+ * - When `href` is absent, renders as a standard <button>.
+ * - The `variant` prop controls the visual style following MD3 specs.
+ * - Icons are rendered via FontAwesome and can be placed left or right.
+ * - The state layer (hover/press overlay) is handled via a CSS ::after
+ *   pseudo-element to avoid changing the background color directly.
+ *
+ * @param label        - Visible text inside the button.
+ * @param icon         - Optional FontAwesome6 icon definition.
+ * @param iconPosition - Side where the icon appears: "left" (default) or "right".
+ * @param variant      - MD3 visual style: "filled" (default) | "outlined" | "tonal".
+ * @param href         - External URL. When provided, renders the button as an <a> tag.
+ * @param onClick      - Optional click handler for both <a> and <button> renders.
+ * @param type         - HTML button type ("button" | "submit" | "reset"). Default: "button".
+ * @param disabled     - Disables interaction and dims the button visually. Default: false.
+ * @param className    - Optional extra CSS class for external overrides.
  */
 
 interface CustomButtonProps {
   label: string;
   icon?: IconDefinition;
   iconPosition?: "left" | "right";
+  variant?: "filled" | "outlined" | "tonal";
   href?: string;
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
@@ -32,47 +42,56 @@ function CustomButton({
   label,
   icon,
   iconPosition = "left",
+  variant = "filled",
   href,
   onClick,
   type = "button",
   disabled = false,
   className = "",
 }: CustomButtonProps) {
-  // Shared content between <a> and <button> renders
+  // Resolve the variant class to combine with the base button class
+  const variantClass = styles[variant] ?? styles.filled;
+
+  // Shared inner content for both <a> and <button> renders
   const buttonContent = (
     <>
       {icon && iconPosition === "left" && (
-        <FontAwesomeIcon icon={icon} className={styles.iconLeft} />
+        <FontAwesomeIcon icon={icon} className={styles.icon} aria-hidden="true" />
       )}
       <span>{label}</span>
       {icon && iconPosition === "right" && (
-        <FontAwesomeIcon icon={icon} className={styles.iconRight} />
+        <FontAwesomeIcon icon={icon} className={styles.icon} aria-hidden="true" />
       )}
     </>
   );
 
-  // If href is provided, render as anchor tag to navigate to external URL
+  // Shared class string built once to avoid duplication
+  const combinedClass = `${styles.customButton} ${variantClass} ${className}`;
+
+  // Render as anchor when an external URL is provided
   if (href) {
     return (
       <a
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className={`${styles.customButton} ${className}`}
+        className={combinedClass}
         onClick={onClick}
+        aria-label={label}
       >
         {buttonContent}
       </a>
     );
   }
 
-  // Default render as a standard button
+  // Default: render as a native button element
   return (
     <button
       type={type}
-      className={`${styles.customButton} ${className}`}
+      className={combinedClass}
       onClick={onClick}
       disabled={disabled}
+      aria-disabled={disabled}
     >
       {buttonContent}
     </button>
