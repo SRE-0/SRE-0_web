@@ -2,7 +2,6 @@
 
 import { TEAMPYROS_ASSETS }    from "../assets/teampyros.assets";
 import type { ProjectSection }  from "../../../shared/types/project-schema.types";
-import { faGithub }             from "@fortawesome/free-brands-svg-icons";
 
 export const TEAMPYROS_APP_SCHEMA: ProjectSection[] = [
   {
