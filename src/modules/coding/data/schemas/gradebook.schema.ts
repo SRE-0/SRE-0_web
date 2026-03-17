@@ -30,6 +30,8 @@ export const GRADEBOOK_SCHEMA: ProjectSection[] = [
     type:    "paragraph",
     i18nKey: "coding_projects.project1.body.technology",
   },
+  /*
+  TODO: add actual screenshots
   {
     type:"subtitle",
     i18nKey: "coding_projects.screenshots",
@@ -37,7 +39,7 @@ export const GRADEBOOK_SCHEMA: ProjectSection[] = [
   {
     type:    "screenshots-grid",
     images:  GRADEBOOK_ASSETS.screenshots,
-  },
+  },*/
   {
     type:    "subtitle",
     i18nKey: "coding_projects.download",

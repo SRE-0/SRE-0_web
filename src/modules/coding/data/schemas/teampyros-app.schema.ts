@@ -34,18 +34,4 @@ export const TEAMPYROS_APP_SCHEMA: ProjectSection[] = [
     type:    "screenshots-grid",
     images:  TEAMPYROS_ASSETS.screenshots,
   },
-  {
-    type:    "subtitle",
-    i18nKey: "coding_projects.download",
-  },
-  {
-    type:    "paragraph",
-    i18nKey: "coding_projects.download_description",
-  },
-  {
-    type:    "button",
-    i18nKey: "coding_projects.github_button",
-    href:    "https://github.com/SRE-0",
-    icon:    faGithub,
-  },
 ];
