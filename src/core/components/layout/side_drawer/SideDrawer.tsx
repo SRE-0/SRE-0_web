@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { ROUTES } from "../../../router/routes.constants";
 import styles from "./SideDrawer.module.css";
+import profile from "../../../../assets/images/profile/profile.webp";
+import { useTranslation } from "../../../../core/i18n/useTranslation";
 
 /**
  * ALL_NAV_LINKS
@@ -35,6 +37,9 @@ interface SideDrawerProps {
  * @param onClose - function to call when the drawer should be dismissed
  */
 function SideDrawer({ isOpen, onClose }: SideDrawerProps) {
+  
+  const { t } = useTranslation("common");
+
   // Close the drawer when Escape is pressed
   useEffect(() => {
     if (!isOpen) return;
@@ -69,20 +74,27 @@ function SideDrawer({ isOpen, onClose }: SideDrawerProps) {
         aria-modal="true"
         aria-label="Navigation menu"
       >
-        {/* Drawer header row */}
+        {/* Drawer header */}
         <div className={styles.drawerHeader}>
-          <span className={styles.drawerTitle}>Menu</span>
-          <button
-            className={styles.closeButton}
-            onClick={onClose}
-            aria-label="Close menu"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-              <line x1="18" y1="6"  x2="6"  y2="18" />
-              <line x1="6"  y1="6"  x2="18" y2="18" />
-            </svg>
-          </button>
+          <img src={profile} alt="Profile picture" className={styles.profile} />
+          
+          <div className={styles.drawerHeaderRow}>
+            <span className={styles.drawerTitle}>Sergio Perez</span>
+            <button
+              className={styles.closeButton}
+              onClick={onClose}
+              aria-label="Close menu"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+                <line x1="18" y1="6"  x2="6"  y2="18" />
+                <line x1="6"  y1="6"  x2="18" y2="18" />
+              </svg>
+            </button>
+          </div>
+          <p className={styles.bio}>
+            {t("Footer.bio")}
+          </p>
         </div>
 
         {/* Navigation links list */}
