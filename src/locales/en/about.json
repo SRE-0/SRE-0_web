@@ -1,64 +1,64 @@
 {
   "about": {
-    "title": "Sobre mí",
+    "title": "About Me",
 
     "introduction": {
-      "title": "El inicio de una curiosidad",
-      "text": "Desde una edad temprana desarrollé un fuerte interés por la tecnología. Comencé experimentando con circuitos electrónicos simples, construyendo pequeñas lámparas LED, sistemas táctiles usando transistores e incluso un sistema básico de riego automatizado. Estos primeros experimentos despertaron una curiosidad constante por entender cómo funcionan los sistemas tecnológicos y cómo podían mejorarse o expandirse."
+      "title": "The Beginning of a Curiosity",
+      "text": "From an early age, I developed a strong interest in technology. I began experimenting with simple electronic circuits, building small LED lamps, touch systems using transistors, and even a basic automated irrigation system. These early experiments sparked a constant curiosity to understand how technological systems work and how they could be improved or expanded."
     },
 
     "software": {
-      "title": "Desarrollo de software",
-      "text": "Con el tiempo, esa curiosidad me llevó naturalmente al mundo del desarrollo de software. Comencé realizando pequeños experimentos con C++, explorando lógica de programación y estructuras básicas. Posteriormente me enfoqué en el desarrollo de aplicaciones Android utilizando Java y Kotlin, donde aprendí a trabajar con tecnologías fundamentales como SQLite, Room, arquitectura MVVM y ViewModels. También he desarrollado interfaces modernas usando XML con Material Design 3 y Material You, además de integrar servicios en la nube como Firebase para sincronización y almacenamiento de datos."
+      "title": "Software Development",
+      "text": "Over time, that curiosity naturally led me into the world of software development. I started by experimenting with C++, exploring programming logic and basic structures. Later, I focused on Android application development using Java and Kotlin, where I learned to work with fundamental technologies such as SQLite, Room, MVVM architecture, and ViewModels. I have also developed modern interfaces using XML with Material Design 3 and Material You, as well as integrated cloud services like Firebase for data synchronization and storage."
     },
 
     "current": {
-      "title": "Actualmente",
-      "text": "Actualmente estudio Ciencias de la Computación mientras continúo explorando nuevas tecnologías y herramientas de desarrollo. En los últimos años he ampliado mi experiencia hacia el desarrollo web y multiplataforma utilizando tecnologías como React, React Native, Expo, TypeScript, JavaScript, HTML y CSS, muchas de las cuales forman parte del desarrollo de esta misma página."
+      "title": "Currently",
+      "text": "I am currently studying Computer Science while continuing to explore new technologies and development tools. In recent years, I have expanded my experience into web and cross-platform development using technologies such as React, React Native, Expo, TypeScript, JavaScript, HTML, and CSS—many of which are part of the development of this very website."
     },
 
     "technologies": {
-      "title": "Tecnologías con las que trabajo",
+      "title": "Technologies I Work With",
       "android": "Kotlin, Java, Android SDK, MVVM, ViewModels, SQLite, Room, Firebase, Material Design 3",
-      "embedded": "ESP32, sensores, prototipado electrónico y sistemas embebidos",
-      "web": "React, React Native, Expo, TypeScript, JavaScript, HTML y CSS"
+      "embedded": "ESP32, sensors, electronic prototyping, and embedded systems",
+      "web": "React, React Native, Expo, TypeScript, JavaScript, HTML, and CSS"
     },
 
     "media": {
-      "title": "Aparición en medios",
-      "description": "Algunos de mis proyectos tecnológicos han sido presentados públicamente. En esta entrevista para televisión hablo sobre el desarrollo de proyectos de robótica y sistemas experimentales que combinan hardware y software.",
-      "video_title": "Entrevista sobre proyectos de robótica y tecnología"
+      "title": "Media Appearance",
+      "description": "Some of my technology projects have been publicly featured. In this television interview, I talk about the development of robotics projects and experimental systems that combine hardware and software.",
+      "video_title": "Interview about robotics and technology projects"
     },
 
     "timeline": {
-      "title": "Trayectoria",
+      "title": "Journey",
       "items": [
         {
-          "year": "Inicio",
-          "text": "Primeros experimentos con electrónica, construyendo circuitos simples y sistemas basados en transistores."
+          "year": "Beginning",
+          "text": "First experiments with electronics, building simple circuits and transistor-based systems."
         },
         {
-          "year": "Programación",
-          "text": "Inicio en programación con C++ y exploración de lógica y algoritmos."
+          "year": "Programming",
+          "text": "Introduction to programming with C++ and exploration of logic and algorithms."
         },
         {
           "year": "Android",
-          "text": "Desarrollo de aplicaciones Android utilizando Java y Kotlin, aprendiendo arquitectura MVVM y bases de datos locales."
+          "text": "Development of Android applications using Java and Kotlin, learning MVVM architecture and local databases."
         },
         {
-          "year": "Robótica",
-          "text": "Participación en proyectos y competencias de robótica, desarrollando sistemas que integran sensores, software y control autónomo."
+          "year": "Robotics",
+          "text": "Participation in robotics projects and competitions, developing systems that integrate sensors, software, and autonomous control."
         },
         {
-          "year": "Actualidad",
-          "text": "Exploración de desarrollo web y multiplataforma con React, React Native y TypeScript mientras continúo desarrollando proyectos tecnológicos."
+          "year": "Present",
+          "text": "Exploring web and cross-platform development with React, React Native, and TypeScript while continuing to build technology projects."
         }
       ]
     },
 
     "contact": {
-      "title": "Contacto",
-      "description": "Si te interesa mi trabajo o deseas colaborar en algún proyecto, no dudes en contactarme. Siempre estoy abierto a conversar sobre tecnología, desarrollo y nuevas ideas."
+      "title": "Contact",
+      "description": "If you are interested in my work or would like to collaborate on a project, feel free to reach out. I am always open to discussing technology, development, and new ideas."
     }
   }
 }
