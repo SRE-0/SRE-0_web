@@ -2,6 +2,7 @@
    CustomButton styles — Material Design 3
    
    Supports three variants: filled, outlined, tonal.
+   Supports an optional animated spinning gradient border via `animated` prop.
    
    How the state layer works:
    - The ::after pseudo-element sits on top of the button at full size.
@@ -12,6 +13,15 @@
        pressed -> 12%
    - This avoids mutating background-color directly and works correctly
      across all three variants with no extra code.
+
+   How the animated border works:
+   - .animatedWrapper is a pill-shaped div with a spinning conic-gradient
+     as its background. It acts as a 2px "border" by being slightly larger
+     than the inner button via padding: 2px.
+   - @property --angle registers a custom CSS property so the browser can
+     interpolate it smoothly in a @keyframes animation.
+   - .animatedInner sets the button background to the surface color so the
+     gradient only peeks through the 2px gap around the edges.
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -66,7 +76,7 @@
 
 /* Hover state layer */
 .customButton:hover::after {
-    opacity: 0.08;
+  opacity: 0.08;
 }
 
 /* Focus-visible state layer + accessible outline */
@@ -157,4 +167,54 @@
   box-shadow:
     0 1px 2px rgba(0, 0, 0, 0.3),
     0 2px 6px 2px rgba(0, 0, 0, 0.15);
+}
+
+/* --------------------------------------------------------------------------
+   Animated gradient border
+   The wrapper spins a conic-gradient. The inner button covers most of it,
+   leaving only the 2px padding gap visible as the animated border ring.
+   -------------------------------------------------------------------------- */
+
+/*
+  Registers --angle as an animatable CSS property.
+  Without @property the browser cannot interpolate a custom property used
+  inside conic-gradient, so the spin animation would not work.
+*/
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes gradient-spin {
+  to {
+    --angle: 360deg;
+  }
+}
+
+/* Outer ring: spinning conic-gradient acting as a 2px border */
+/* Outer ring: spinning conic-gradient acting as a 3px border */
+.animatedWrapper {
+  display: inline-flex;
+  border-radius: 9999px;
+
+  /* 3px "border" — slightly thicker so the gradient is more visible */
+  padding: 3px;
+
+background: conic-gradient(
+  from var(--angle),
+  var(--md-sys-color-primary-container),
+  var(--md-sys-color-tertiary-container),
+  var(--md-sys-color-tertiary-container)
+);
+
+  animation: gradient-spin 4s linear infinite;
+}
+
+/* Inner button: surface background hides the gradient except at the 2px edge */
+.animatedInner {
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  border: none;
+  box-shadow: none;
 }

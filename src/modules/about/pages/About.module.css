@@ -3,5 +3,27 @@
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 1rem;
+  margin-top: var(--spacing-md);
+}
+
+.skill_container{
+  padding: 
+    var(--spacing-sm)
+    var(--spacing-md) 
+    var(--spacing-sm)
+    var(--spacing-md) ;
+  background-color: var(--md-sys-color-tertiary);
+  width: fit-content;
+  border-radius: var(--radius-lg);
+  color: var(--md-sys-color-on-tertiary);
+
+  font-size: var(--text-md);
+}
+
+.skill_text{
+
+}
+
+.icon{
+  margin-right: var(--spacing-xs);
 }

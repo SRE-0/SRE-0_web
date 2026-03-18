@@ -27,7 +27,7 @@ function CustomFooter() {
         {/* Contact info block */}
         <div className={styles.contactBlock}>
           <p className={styles.name}>
-            Sergio Perez
+            Sergio Pérez
           </p>
           <p className={styles.bio}>
             {t("Footer.bio")}
@@ -43,7 +43,7 @@ function CustomFooter() {
 
         {/* Copyright row */}
         <p className={styles.copyright}>
-          &copy; {new Date().getFullYear()} Sergio Perez. All rights reserved.
+          &copy; {new Date().getFullYear()} Sergio Pérez. All rights reserved.
         </p>
 
       </div>

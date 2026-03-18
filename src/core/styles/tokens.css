@@ -65,6 +65,100 @@
   --md-sys-color-surface-container: rgb(248 234 240);
   --md-sys-color-surface-container-high: rgb(242 229 235);
   --md-sys-color-surface-container-highest: rgb(236 223 229);
+
+  /* --------------------------------------------------------------------------
+     Skill badge color pairs — light mode
+     Convention: --md-skill-<key>       = container / background
+                 --md-skill-on-<key>    = content (icon + text)
+
+     Each hue is picked to match the technology's brand identity while
+     staying within the Material You tonal-palette approach (muted,
+     accessible container tones for light mode).
+     -------------------------------------------------------------------------- */
+
+  /* Kotlin — violet-purple, matches Kotlin brand gradient */
+  --md-skill-kotlin:        rgb(234 221 255);
+  --md-skill-on-kotlin:     rgb(56 18 105);
+
+  /* Android — green, matches Android robot brand color */
+  --md-skill-android:       rgb(196 238 208);
+  --md-skill-on-android:    rgb(0 57 25);
+
+  /* JavaScript — warm amber/yellow, matches JS logo */
+  --md-skill-javascript:    rgb(255 236 178);
+  --md-skill-on-javascript: rgb(65 45 0);
+
+  /* React — cyan-teal, matches React logo */
+  --md-skill-react:         rgb(189 243 255);
+  --md-skill-on-react:      rgb(0 51 64);
+
+  /* Python — indigo-blue, matches Python logo primary */
+  --md-skill-python:        rgb(211 227 253);
+  --md-skill-on-python:     rgb(6 42 100);
+
+  /* Rust — burnt orange, matches Rust logo */
+  --md-skill-rust:          rgb(255 219 194);
+  --md-skill-on-rust:       rgb(80 27 0);
+
+  /* Embedded C — neutral dark-green / military tone */
+  --md-skill-embedded:      rgb(210 232 213);
+  --md-skill-on-embedded:   rgb(12 52 24);
+
+  /* SQL — deep blue, database feel */
+  --md-skill-sql:           rgb(210 228 255);
+  --md-skill-on-sql:        rgb(0 38 90);
+
+  /* Node.js — dark green, matches Node logo */
+  --md-skill-nodejs:        rgb(198 238 214);
+  --md-skill-on-nodejs:     rgb(0 54 28);
+
+  /* Git — red-orange, matches Git logo */
+  --md-skill-git:           rgb(255 218 212);
+  --md-skill-on-git:        rgb(96 17 0);
+
+  /* TypeScript — rich blue, matches TS logo */
+  --md-skill-typescript:    rgb(205 229 255);
+  --md-skill-on-typescript: rgb(0 43 96);
+
+  /* Jetpack Compose — magenta-pink, matches Compose branding */
+  --md-skill-compose:       rgb(255 212 246);
+  --md-skill-on-compose:    rgb(89 0 80);
+
+  --md-skill-java:           rgb(255 228 196);
+  --md-skill-on-java:        rgb(80 35 0);
+
+  --md-skill-mvvm:           rgb(220 230 255);
+  --md-skill-on-mvvm:        rgb(10 36 100);
+
+  --md-skill-viewmodel:      rgb(225 240 220);
+  --md-skill-on-viewmodel:   rgb(15 50 10);
+
+  --md-skill-sqlite:         rgb(215 235 255);
+  --md-skill-on-sqlite:      rgb(0 40 90);
+
+  --md-skill-room:           rgb(208 232 255);
+  --md-skill-on-room:        rgb(0 38 85);
+
+  --md-skill-firebase:       rgb(255 230 180);
+  --md-skill-on-firebase:    rgb(80 38 0);
+
+  --md-skill-md3:            rgb(255 212 246);
+  --md-skill-on-md3:         rgb(89 0 80);
+
+  --md-skill-esp32:          rgb(210 240 218);
+  --md-skill-on-esp32:       rgb(5 55 20);
+
+  --md-skill-sensors:        rgb(235 225 255);
+  --md-skill-on-sensors:     rgb(45 10 100);
+
+  --md-skill-reactnative:    rgb(185 245 255);
+  --md-skill-on-reactnative: rgb(0 50 62);
+
+  --md-skill-expo:           rgb(225 220 255);
+  --md-skill-on-expo:        rgb(30 10 90);
+
+  --md-skill-htmlcss:        rgb(255 222 200);
+  --md-skill-on-htmlcss:     rgb(90 28 0);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -118,6 +212,96 @@
     --md-sys-color-surface-container: rgb(36 30 34);
     --md-sys-color-surface-container-high: rgb(47 40 44);
     --md-sys-color-surface-container-highest: rgb(58 51 55);
+
+    /* --------------------------------------------------------------------------
+       Skill badge color pairs — dark mode
+       Dark mode uses the vivid/saturated tone as the container so badges
+       remain visible on dark surfaces, with very dark on-color for contrast.
+       -------------------------------------------------------------------------- */
+
+    /* Kotlin */
+    --md-skill-kotlin:        rgb(124 76 199);
+    --md-skill-on-kotlin:     rgb(244 238 255);
+
+    /* Android */
+    --md-skill-android:       rgb(56 152 85);
+    --md-skill-on-android:    rgb(220 255 232);
+
+    /* JavaScript */
+    --md-skill-javascript:    rgb(186 138 0);
+    --md-skill-on-javascript: rgb(255 245 210);
+
+    /* React */
+    --md-skill-react:         rgb(0 162 194);
+    --md-skill-on-react:      rgb(210 248 255);
+
+    /* Python */
+    --md-skill-python:        rgb(58 104 206);
+    --md-skill-on-python:     rgb(220 234 255);
+
+    /* Rust */
+    --md-skill-rust:          rgb(194 88 30);
+    --md-skill-on-rust:       rgb(255 234 218);
+
+    /* Embedded C */
+    --md-skill-embedded:      rgb(52 126 72);
+    --md-skill-on-embedded:   rgb(216 245 222);
+
+    /* SQL */
+    --md-skill-sql:           rgb(40 100 200);
+    --md-skill-on-sql:        rgb(216 234 255);
+
+    /* Node.js */
+    --md-skill-nodejs:        rgb(44 140 76);
+    --md-skill-on-nodejs:     rgb(210 248 222);
+
+    /* Git */
+    --md-skill-git:           rgb(198 52 18);
+    --md-skill-on-git:        rgb(255 226 218);
+
+    /* TypeScript */
+    --md-skill-typescript:    rgb(28 88 188);
+    --md-skill-on-typescript: rgb(212 232 255);
+
+    /* Jetpack Compose */
+    --md-skill-compose:       rgb(170 42 158);
+    --md-skill-on-compose:    rgb(255 228 252);
+
+    --md-skill-java:           rgb(190 100 20);
+    --md-skill-on-java:        rgb(255 235 210);
+
+    --md-skill-mvvm:           rgb(50 90 200);
+    --md-skill-on-mvvm:        rgb(220 232 255);
+
+    --md-skill-viewmodel:      rgb(48 120 55);
+    --md-skill-on-viewmodel:   rgb(215 245 218);
+
+    --md-skill-sqlite:         rgb(35 95 195);
+    --md-skill-on-sqlite:      rgb(214 232 255);
+
+    --md-skill-room:           rgb(30 90 190);
+    --md-skill-on-room:        rgb(210 230 255);
+
+    --md-skill-firebase:       rgb(200 110 0);
+    --md-skill-on-firebase:    rgb(255 235 195);
+
+    --md-skill-md3:            rgb(170 42 158);
+    --md-skill-on-md3:         rgb(255 228 252);
+
+    --md-skill-esp32:          rgb(40 130 65);
+    --md-skill-on-esp32:       rgb(210 248 220);
+
+    --md-skill-sensors:        rgb(100 60 195);
+    --md-skill-on-sensors:     rgb(238 230 255);
+
+    --md-skill-reactnative:    rgb(0 155 185);
+    --md-skill-on-reactnative: rgb(208 248 255);
+
+    --md-skill-expo:           rgb(85 55 190);
+    --md-skill-on-expo:        rgb(232 228 255);
+
+    --md-skill-htmlcss:        rgb(195 75 20);
+    --md-skill-on-htmlcss:     rgb(255 230 210);
   }
 }
 
@@ -174,6 +358,79 @@
   --md-sys-color-surface-container: rgb(248 234 240);
   --md-sys-color-surface-container-high: rgb(242 229 235);
   --md-sys-color-surface-container-highest: rgb(236 223 229);
+
+  /* Skill badge color pairs — forced light mode (identical to :root light) */
+  --md-skill-kotlin:        rgb(234 221 255);
+  --md-skill-on-kotlin:     rgb(56 18 105);
+
+  --md-skill-android:       rgb(196 238 208);
+  --md-skill-on-android:    rgb(0 57 25);
+
+  --md-skill-javascript:    rgb(255 236 178);
+  --md-skill-on-javascript: rgb(65 45 0);
+
+  --md-skill-react:         rgb(189 243 255);
+  --md-skill-on-react:      rgb(0 51 64);
+
+  --md-skill-python:        rgb(211 227 253);
+  --md-skill-on-python:     rgb(6 42 100);
+
+  --md-skill-rust:          rgb(255 219 194);
+  --md-skill-on-rust:       rgb(80 27 0);
+
+  --md-skill-embedded:      rgb(210 232 213);
+  --md-skill-on-embedded:   rgb(12 52 24);
+
+  --md-skill-sql:           rgb(210 228 255);
+  --md-skill-on-sql:        rgb(0 38 90);
+
+  --md-skill-nodejs:        rgb(198 238 214);
+  --md-skill-on-nodejs:     rgb(0 54 28);
+
+  --md-skill-git:           rgb(255 218 212);
+  --md-skill-on-git:        rgb(96 17 0);
+
+  --md-skill-typescript:    rgb(205 229 255);
+  --md-skill-on-typescript: rgb(0 43 96);
+
+  --md-skill-compose:       rgb(255 212 246);
+  --md-skill-on-compose:    rgb(89 0 80);
+
+  --md-skill-java:           rgb(255 228 196);
+  --md-skill-on-java:        rgb(80 35 0);
+
+  --md-skill-mvvm:           rgb(220 230 255);
+  --md-skill-on-mvvm:        rgb(10 36 100);
+
+  --md-skill-viewmodel:      rgb(225 240 220);
+  --md-skill-on-viewmodel:   rgb(15 50 10);
+
+  --md-skill-sqlite:         rgb(215 235 255);
+  --md-skill-on-sqlite:      rgb(0 40 90);
+
+  --md-skill-room:           rgb(208 232 255);
+  --md-skill-on-room:        rgb(0 38 85);
+
+  --md-skill-firebase:       rgb(255 230 180);
+  --md-skill-on-firebase:    rgb(80 38 0);
+
+  --md-skill-md3:            rgb(255 212 246);
+  --md-skill-on-md3:         rgb(89 0 80);
+
+  --md-skill-esp32:          rgb(210 240 218);
+  --md-skill-on-esp32:       rgb(5 55 20);
+
+  --md-skill-sensors:        rgb(235 225 255);
+  --md-skill-on-sensors:     rgb(45 10 100);
+
+  --md-skill-reactnative:    rgb(185 245 255);
+  --md-skill-on-reactnative: rgb(0 50 62);
+
+  --md-skill-expo:           rgb(225 220 255);
+  --md-skill-on-expo:        rgb(30 10 90);
+
+  --md-skill-htmlcss:        rgb(255 222 200);
+  --md-skill-on-htmlcss:     rgb(90 28 0);
 }
 
 /* --------------------------------------------------------------------------
@@ -229,4 +486,77 @@
   --md-sys-color-surface-container: rgb(36 30 34);
   --md-sys-color-surface-container-high: rgb(47 40 44);
   --md-sys-color-surface-container-highest: rgb(58 51 55);
+
+  /* Skill badge color pairs — forced dark mode (identical to media dark) */
+  --md-skill-kotlin:        rgb(124 76 199);
+  --md-skill-on-kotlin:     rgb(244 238 255);
+
+  --md-skill-android:       rgb(56 152 85);
+  --md-skill-on-android:    rgb(220 255 232);
+
+  --md-skill-javascript:    rgb(186 138 0);
+  --md-skill-on-javascript: rgb(255 245 210);
+
+  --md-skill-react:         rgb(0 162 194);
+  --md-skill-on-react:      rgb(210 248 255);
+
+  --md-skill-python:        rgb(58 104 206);
+  --md-skill-on-python:     rgb(220 234 255);
+
+  --md-skill-rust:          rgb(194 88 30);
+  --md-skill-on-rust:       rgb(255 234 218);
+
+  --md-skill-embedded:      rgb(52 126 72);
+  --md-skill-on-embedded:   rgb(216 245 222);
+
+  --md-skill-sql:           rgb(40 100 200);
+  --md-skill-on-sql:        rgb(216 234 255);
+
+  --md-skill-nodejs:        rgb(44 140 76);
+  --md-skill-on-nodejs:     rgb(210 248 222);
+
+  --md-skill-git:           rgb(198 52 18);
+  --md-skill-on-git:        rgb(255 226 218);
+
+  --md-skill-typescript:    rgb(28 88 188);
+  --md-skill-on-typescript: rgb(212 232 255);
+
+  --md-skill-compose:       rgb(170 42 158);
+  --md-skill-on-compose:    rgb(255 228 252);
+
+  --md-skill-java:           rgb(190 100 20);
+  --md-skill-on-java:        rgb(255 235 210);
+
+  --md-skill-mvvm:           rgb(50 90 200);
+  --md-skill-on-mvvm:        rgb(220 232 255);
+
+  --md-skill-viewmodel:      rgb(48 120 55);
+  --md-skill-on-viewmodel:   rgb(215 245 218);
+
+  --md-skill-sqlite:         rgb(35 95 195);
+  --md-skill-on-sqlite:      rgb(214 232 255);
+
+  --md-skill-room:           rgb(30 90 190);
+  --md-skill-on-room:        rgb(210 230 255);
+
+  --md-skill-firebase:       rgb(200 110 0);
+  --md-skill-on-firebase:    rgb(255 235 195);
+
+  --md-skill-md3:            rgb(170 42 158);
+  --md-skill-on-md3:         rgb(255 228 252);
+
+  --md-skill-esp32:          rgb(40 130 65);
+  --md-skill-on-esp32:       rgb(210 248 220);
+
+  --md-skill-sensors:        rgb(100 60 195);
+  --md-skill-on-sensors:     rgb(238 230 255);
+
+  --md-skill-reactnative:    rgb(0 155 185);
+  --md-skill-on-reactnative: rgb(208 248 255);
+
+  --md-skill-expo:           rgb(85 55 190);
+  --md-skill-on-expo:        rgb(232 228 255);
+
+  --md-skill-htmlcss:        rgb(195 75 20);
+  --md-skill-on-htmlcss:     rgb(255 230 210);
 }

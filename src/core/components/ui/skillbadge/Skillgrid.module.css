@@ -1,0 +1,36 @@
+/* ==========================================================================
+   SkillGrid.module.css
+   Layout for the skill groups and badge rows.
+   ========================================================================== */
+
+/* Vertical stack of skill groups */
+.groups {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+/* Single group: label + badge row */
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+/* Group heading — subtle secondary label */
+.groupTitle {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--md-sys-color-on-surface-variant);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Wrapping row of skill pills */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}

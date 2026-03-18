@@ -79,7 +79,7 @@ function SideDrawer({ isOpen, onClose }: SideDrawerProps) {
           <img src={profile} alt="Profile picture" className={styles.profile} />
           
           <div className={styles.drawerHeaderRow}>
-            <span className={styles.drawerTitle}>Sergio Perez</span>
+            <span className={styles.drawerTitle}>Sergio Pérez</span>
             <button
               className={styles.closeButton}
               onClick={onClose}

@@ -19,7 +19,7 @@
   position: relative;
   width: 100%;
   padding-bottom: 56.25%;
-  border-radius: 16px;           /* MD3 large shape token */
+  border-radius: var(--radius-lg);           /* MD3 large shape token */
   overflow: hidden;
 
   /* MD3 surface container + elevation shadow */

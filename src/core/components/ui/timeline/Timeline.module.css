@@ -1,0 +1,286 @@
+/* ==========================================================================
+   Timeline.module.css — Material Design 3 Expressive vertical timeline
+   
+   Structure:
+   - .timelineWrapper  outer container, relative position for the track
+   - .track            animated vertical line (::before draws the fill)
+   - .list             ordered list of milestone rows
+   - .row              single milestone: marker column + card column
+   - .marker           year label + ripple ring + dot
+   - .dot              solid filled circle at each milestone
+   - .ripple           decorative expanding ring behind the dot
+   - .card             content box that slides in from the right
+   
+   Animation philosophy (MD3 Expressive):
+   - trackGrow:    line height animates 0 → 100% to "draw" the timeline.
+   - dotPop:       dot scales from 0 → 1.15 → 1 with a springy overshoot.
+   - ripplePulse:  outer ring expands and fades in a continuous loop.
+   - cardSlideIn:  card translates right → 0 and fades in, staggered via
+                   --item-index so each card enters after the previous one.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Keyframes
+   -------------------------------------------------------------------------- */
+
+/* Draws the vertical track line from top to bottom */
+@keyframes trackGrow {
+  from { transform: scaleY(0); }
+  to   { transform: scaleY(1); }
+}
+
+/* Springy pop-in for each milestone dot */
+@keyframes dotPop {
+  0%   { transform: scale(0);    opacity: 0; }
+  70%  { transform: scale(1.25); opacity: 1; }
+  100% { transform: scale(1);    opacity: 1; }
+}
+
+/* Continuous radial ripple to draw attention to each milestone */
+@keyframes ripplePulse {
+  0%   { transform: scale(0.6); opacity: 0.6; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+/* Staggered slide-in for content cards */
+@keyframes cardSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Year label fades up into place */
+@keyframes yearFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Wrapper
+   -------------------------------------------------------------------------- */
+.timelineWrapper {
+  position: relative;
+  padding: 8px 0 8px 0;
+}
+
+/* --------------------------------------------------------------------------
+   Vertical track line
+   The line starts at the first dot and ends at the last.
+   transform-origin: top so scaleY animates downward.
+   -------------------------------------------------------------------------- */
+.track {
+  position: absolute;
+
+  /* Horizontally aligned with the dot centre.
+     Dot is 14px wide, marker column is 80px wide (64px year + 16px gap).
+     Centre of dot = 64 + 16/2 ≈ 72px from left. Fine-tune via --track-left. */
+  left: calc(var(--track-left, 72px) - 1px);
+  top: 20px;
+  bottom: 20px;
+  width: 2px;
+
+  /* Background: primary colour with subtle transparency */
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    var(--md-sys-color-primary) 8%,
+    var(--md-sys-color-primary) 92%,
+    transparent 100%
+  );
+  opacity: 0.25;
+
+  transform-origin: top center;
+  animation: trackGrow 1s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* --------------------------------------------------------------------------
+   Milestone list
+   -------------------------------------------------------------------------- */
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Row — one milestone
+   --item-index is set inline to stagger animations.
+   --accent     overrides the dot/year colour per item.
+   -------------------------------------------------------------------------- */
+.row {
+  display: grid;
+  /* Year label | dot | card */
+  grid-template-columns: 64px 32px 1fr;
+  align-items: flex-start;
+  gap: 0 16px;
+
+  /* Stagger: each item waits (index * 120ms) before starting */
+  --stagger: calc(var(--item-index, 0) * 120ms);
+}
+
+/* --------------------------------------------------------------------------
+   Marker column (year + ripple + dot)
+   The marker is a grid area that stacks ripple and dot via absolute positioning.
+   -------------------------------------------------------------------------- */
+.marker {
+  /* The marker itself spans both the year and dot columns via the parent grid.
+     But we keep it simple: year is in col 1, dot/ripple are in col 2. */
+  display: contents; /* Let children participate in the parent grid directly */
+}
+
+/* Year label — column 1 */
+.year {
+  grid-column: 1;
+  text-align: right;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--accent, var(--md-sys-color-primary));
+  padding-top: 2px;
+  line-height: 1;
+
+  /* Align with dot centre (dot is ~14px, padding-top nudge) */
+  margin-top: 3px;
+
+  opacity: 0;
+  animation: yearFadeUp 400ms cubic-bezier(0.4, 0, 0.2, 1)
+    calc(var(--stagger) + 200ms) both;
+}
+
+/* Dot — column 2, centred */
+.dot {
+  grid-column: 2;
+  justify-self: center;
+  align-self: start;
+  margin-top: 0;
+
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: var(--accent, var(--md-sys-color-primary));
+  position: relative;
+  z-index: 2;
+
+  /* Inner white/surface highlight */
+  box-shadow:
+    0 0 0 3px var(--md-sys-color-surface, #fff),
+    0 0 0 4px var(--accent, var(--md-sys-color-primary));
+
+  opacity: 0;
+  animation: dotPop 500ms cubic-bezier(0.34, 1.56, 0.64, 1)
+    calc(var(--stagger) + 80ms) both;
+}
+
+/* Ripple ring — same column 2, same cell, overlaps dot via negative margin trick */
+.ripple {
+  grid-column: 2;
+  justify-self: center;
+  align-self: start;
+
+  /* Match dot size then expand outward */
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid var(--accent, var(--md-sys-color-primary));
+  opacity: 0;
+  position: relative;
+  z-index: 1;
+
+  /* Ripple loops indefinitely, delayed to start after dot appears */
+  animation:
+    dotPop 500ms cubic-bezier(0.34, 1.56, 0.64, 1) calc(var(--stagger) + 80ms) both,
+    ripplePulse 2s cubic-bezier(0.4, 0, 0.6, 1)
+      calc(var(--stagger) + 600ms) infinite;
+}
+
+/* --------------------------------------------------------------------------
+   Content card — column 3
+   -------------------------------------------------------------------------- */
+.card {
+  grid-column: 3;
+  background-color: var(--md-sys-color-surface-container, #f4f4f4);
+  border-radius: 16px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  position: relative;
+
+  /* Subtle left accent border */
+  border-left: 3px solid var(--accent, var(--md-sys-color-primary));
+
+  /* MD3 elevation level 1 */
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.12),
+    0 2px 6px 2px rgba(0, 0, 0, 0.08);
+
+  opacity: 0;
+  animation: cardSlideIn 500ms cubic-bezier(0.4, 0, 0.2, 1)
+    calc(var(--stagger) + 160ms) both;
+
+  transition: box-shadow 200ms ease, transform 150ms ease;
+}
+
+/* Hover lift */
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.14),
+    0 4px 12px 2px rgba(0, 0, 0, 0.1);
+}
+
+.cardTitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0 0 6px 0;
+  color: var(--md-sys-color-on-surface, #1c1b1f);
+  line-height: 1.3;
+}
+
+.cardBody {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin: 0;
+  color: var(--md-sys-color-on-surface-variant, #49454f);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive — collapse year label on small screens
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .row {
+    grid-template-columns: 0 24px 1fr;
+    gap: 0 12px;
+  }
+
+  .year {
+    display: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Reduced-motion override — disable all animations
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .track,
+  .dot,
+  .ripple,
+  .card,
+  .year {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

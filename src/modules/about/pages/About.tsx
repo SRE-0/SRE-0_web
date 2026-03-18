@@ -7,7 +7,9 @@ import header from "../../../assets/images/about/about_70.webp";
 import CustomButton from "../../../core/components/ui/custom_button/CustomButton";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import styles from "./About.module.css"
+import styles from "./About.module.css";
+
+import SkillGrid from "../../../core/components/ui/skillbadge/Skillgrid";
 
 /**
  * About page component.
@@ -58,9 +60,19 @@ export default function About() {
         {/* Technologies section — maps to about.technologies */}
         <section>
           <h2>{t("about.technologies.title")}</h2>
+
+          {/*
+            SkillGrid renders all technology badges as colored pills.
+            Each badge has its own Material You color pair derived from
+            --md-skill-<key> and --md-skill-on-<key> in tokens.css.
+          */}
+          <SkillGrid />
+
+          {/*
           <p>{t("about.technologies.android")}</p>
           <p>{t("about.technologies.embedded")}</p>
           <p>{t("about.technologies.web")}</p>
+          */}
         </section>
 
         {/* Media appearance section — maps to about.media */}
@@ -69,7 +81,7 @@ export default function About() {
           <p>{t("about.media.description")}</p>
           <p>{t("about.media.video_title")}</p>
 
-          {/* 
+          {/*
             Reusable YoutubeEmbed component.
             videoId: the YouTube video identifier
             title:   accessible label for screen readers
@@ -77,7 +89,7 @@ export default function About() {
           */}
           <YoutubeEmbed
             videoId="_Ig47f-CQ20"
-            startAt={355}
+            startAt={354}
           />
         </section>
 
@@ -95,6 +107,7 @@ export default function About() {
             <CustomButton
               label="Email"
               icon={faEnvelope}
+              animated
               href="mailto:sergioandresp660@gmail.com"
             />
           </div>
