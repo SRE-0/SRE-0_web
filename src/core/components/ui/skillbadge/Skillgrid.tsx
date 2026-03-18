@@ -5,7 +5,6 @@ import {
   faReact,
 } from "@fortawesome/free-brands-svg-icons";
 import {
-  faBolt,
   faCode,
   faCube,
   faDatabase,
